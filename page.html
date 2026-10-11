@@ -1,0 +1,531 @@
+<title>Prépa 10k Paris Centre</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@500;600;700;800&family=Source+Sans+3:wght@400;500;600;700&family=JetBrains+Mono:wght@400;600&display=swap">
+<style>
+/* Layout : feuille de route d'entraîneur. Bandeau dossard, frise des 5 semaines, puis une carte par jour avec ses blocs minutés. */
+:root{
+  --bg:#F3F5F8; --surface:#FFFFFF; --ink:#13203A; --muted:#5A6680; --line:#DCE2EC;
+  --accent:#1F46D1; --accent-soft:#E4EAFB; --bib:#FFFFFF; --bib-ink:#13203A;
+  --run:#E2572B; --swim:#1A8FB8; --bike:#7A55C9; --str:#C2861A; --yoga:#2E9C6A; --rest:#8A94A8;
+  --warn-bg:#FFF4E0; --warn-ink:#7A4A00;
+  --f-display:"Barlow Condensed","Arial Narrow",sans-serif;
+  --f-body:"Source Sans 3",system-ui,-apple-system,"Segoe UI",sans-serif;
+  --f-mono:"JetBrains Mono",ui-monospace,Menlo,monospace;
+}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){
+  --bg:#0E1424; --surface:#161E33; --ink:#E6EBF5; --muted:#9AA6C0; --line:#2A3552;
+  --accent:#7D9BFF; --accent-soft:#1E2A4E; --bib:#1B2440; --bib-ink:#E6EBF5;
+  --run:#FF8457; --swim:#4CC0E6; --bike:#A98BF0; --str:#E5AE45; --yoga:#56C99A; --rest:#8E99B2;
+  --warn-bg:#3A2C10; --warn-ink:#FFD58A; color-scheme:dark}}
+:root[data-theme="dark"]{
+  --bg:#0E1424; --surface:#161E33; --ink:#E6EBF5; --muted:#9AA6C0; --line:#2A3552;
+  --accent:#7D9BFF; --accent-soft:#1E2A4E; --bib:#1B2440; --bib-ink:#E6EBF5;
+  --run:#FF8457; --swim:#4CC0E6; --bike:#A98BF0; --str:#E5AE45; --yoga:#56C99A; --rest:#8E99B2;
+  --warn-bg:#3A2C10; --warn-ink:#FFD58A; color-scheme:dark}
+
+*{box-sizing:border-box}
+body{background:var(--bg);color:var(--ink);font-family:var(--f-body);font-size:16px;line-height:1.55;margin:0}
+.wrap{max-width:980px;margin:0 auto;padding-inline:16px;padding-block:28px 64px;display:grid;gap:40px}
+h1,h2,h3{font-family:var(--f-display);text-wrap:balance;margin:0;line-height:1.05}
+h2{font-size:2rem;font-weight:700;letter-spacing:.01em}
+h3{font-size:1.35rem;font-weight:600}
+p{margin:0}
+.eyebrow{font-family:var(--f-display);font-weight:600;text-transform:uppercase;letter-spacing:.12em;font-size:.85rem;color:var(--muted)}
+.mono,.pace{font-family:var(--f-mono);font-variant-numeric:tabular-nums}
+.section{display:grid;gap:16px}
+.lead{color:var(--muted);max-width:68ch}
+
+/* Dossard */
+.bib{background:var(--bib);color:var(--bib-ink);border:2px solid var(--ink);border-radius:14px;padding:22px;display:grid;gap:18px;position:relative}
+.bib::before,.bib::after{content:"";position:absolute;top:14px;width:12px;height:12px;border-radius:50%;border:2px solid var(--ink);background:var(--bg)}
+.bib::before{left:14px}.bib::after{right:14px}
+.bib-top{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;padding-inline:20px}
+.bib-num{font-family:var(--f-display);font-weight:800;font-size:clamp(3.4rem,13vw,6.5rem);line-height:.9;letter-spacing:-.01em;text-align:center}
+.bib-num span{color:var(--accent)}
+.bib-sub{text-align:center;font-family:var(--f-display);font-size:1.25rem;font-weight:600;letter-spacing:.04em}
+.stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:12px;border-top:2px dashed var(--line);padding-top:16px}
+.stat{display:grid;gap:2px}
+.stat b{font-family:var(--f-display);font-size:1.7rem;font-weight:700;line-height:1}
+.stat small{color:var(--muted);font-size:.85rem}
+
+/* Bilan */
+.notice{background:var(--warn-bg);color:var(--warn-ink);border-radius:10px;padding:16px 18px;display:grid;gap:8px}
+.notice strong{font-family:var(--f-display);font-size:1.15rem;letter-spacing:.02em}
+.grid2{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:16px}
+.panel{background:var(--surface);border:1px solid var(--line);border-radius:10px;padding:18px;display:grid;gap:10px;min-width:0}
+table{border-collapse:collapse;width:100%;font-size:.95rem}
+th,td{text-align:left;padding:7px 8px;border-bottom:1px solid var(--line);vertical-align:top}
+th{font-family:var(--f-display);font-weight:600;text-transform:uppercase;letter-spacing:.06em;font-size:.8rem;color:var(--muted)}
+td.num{font-family:var(--f-mono);font-variant-numeric:tabular-nums;white-space:nowrap}
+.scroll{overflow-x:auto}
+
+/* Frise des semaines */
+.road{display:grid;grid-template-columns:repeat(5,minmax(150px,1fr));gap:10px;overflow-x:auto;padding-bottom:4px}
+.wk{background:var(--surface);border:1px solid var(--line);border-radius:10px;padding:14px;display:grid;gap:6px;align-content:start}
+.wk.now{border:2px solid var(--accent);background:var(--accent-soft)}
+.wk.race{border-style:dashed}
+.wk .k{font-family:var(--f-display);font-size:1.6rem;font-weight:700;line-height:1}
+.wk p{font-size:.9rem;color:var(--muted)}
+.bar{height:6px;border-radius:3px;background:var(--line);overflow:hidden}
+.bar i{display:block;height:100%;background:var(--run)}
+
+/* Légende */
+.legend{display:flex;flex-wrap:wrap;gap:8px 16px;font-size:.9rem;color:var(--muted)}
+.legend span{display:inline-flex;align-items:center;gap:6px}
+.dot{width:10px;height:10px;border-radius:50%;display:inline-block;flex:none}
+.d-run{background:var(--run)}.d-swim{background:var(--swim)}.d-bike{background:var(--bike)}.d-str{background:var(--str)}.d-yoga{background:var(--yoga)}
+
+/* Semaine (aperçu) */
+.strip{display:grid;grid-template-columns:repeat(7,minmax(110px,1fr));gap:8px;overflow-x:auto;padding-bottom:4px}
+.strip a{color:inherit;text-decoration:none;background:var(--surface);border:1px solid var(--line);border-radius:10px;padding:10px;display:grid;gap:6px;align-content:start}
+.strip a:hover,.strip a:focus-visible{border-color:var(--accent);outline:none}
+.strip .dn{font-family:var(--f-display);font-weight:700;font-size:1.1rem}
+.strip .chips{display:flex;flex-wrap:wrap;gap:4px}
+.strip small{font-size:.8rem;color:var(--muted)}
+
+/* Jours */
+.day{background:var(--surface);border:1px solid var(--line);border-radius:12px;overflow:hidden}
+.day-head{display:flex;justify-content:space-between;align-items:baseline;gap:12px;flex-wrap:wrap;padding:16px 18px;border-bottom:1px solid var(--line)}
+.day-head h3{font-size:1.7rem}
+.day-head .meta{color:var(--muted);font-size:.9rem}
+.sess{padding:16px 18px;display:grid;gap:12px;border-top:1px solid var(--line)}
+.sess:first-of-type{border-top:0}
+.sess-head{display:flex;gap:10px;align-items:flex-start;justify-content:space-between;flex-wrap:wrap}
+.sess-title{display:flex;align-items:center;gap:10px;min-width:0}
+.tag{font-family:var(--f-display);font-weight:700;text-transform:uppercase;letter-spacing:.08em;font-size:.78rem;padding:3px 8px;border-radius:4px;color:var(--surface);flex:none}
+.t-run{background:var(--run)}.t-swim{background:var(--swim)}.t-bike{background:var(--bike)}.t-str{background:var(--str)}.t-yoga{background:var(--yoga)}
+.sess-title h4{margin:0;font-size:1.05rem;font-weight:700}
+.when{font-family:var(--f-mono);font-size:.85rem;color:var(--muted);white-space:nowrap}
+.goal{color:var(--muted);font-size:.95rem;max-width:72ch}
+ol.blocks{list-style:none;margin:0;padding:0;display:grid;gap:0;border-left:3px solid var(--line);margin-left:4px}
+ol.blocks li{display:grid;grid-template-columns:5.2rem 1fr;gap:10px;padding:6px 0 6px 12px;position:relative}
+ol.blocks li::before{content:"";position:absolute;left:-7px;top:13px;width:11px;height:11px;border-radius:50%;background:var(--surface);border:3px solid var(--line)}
+ol.blocks li.main::before{border-color:var(--ink)}
+ol.blocks .dur{font-family:var(--f-mono);font-size:.85rem;color:var(--muted);padding-top:2px;font-variant-numeric:tabular-nums}
+ol.blocks .what{min-width:0}
+ol.blocks .what b{font-weight:700}
+ul.ex{margin:6px 0 0;padding-left:18px;display:grid;gap:3px;font-size:.95rem}
+.tip{font-size:.92rem;border-left:3px solid var(--accent);padding:4px 0 4px 12px;color:var(--muted)}
+.done{display:inline-flex;align-items:center;gap:8px;font-size:.9rem;color:var(--muted);cursor:pointer;user-select:none}
+.done input{width:18px;height:18px;accent-color:var(--accent);cursor:pointer}
+.day.is-done{opacity:.72}
+.total{font-family:var(--f-mono);font-size:.85rem}
+
+.rules{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:12px}
+.rules .panel h4{margin:0;font-family:var(--f-display);font-size:1.15rem;font-weight:600}
+.rules .panel p{font-size:.95rem;color:var(--muted)}
+footer{color:var(--muted);font-size:.85rem;border-top:1px solid var(--line);padding-top:16px}
+a{color:var(--accent)}
+:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+@media (max-width:560px){
+  ol.blocks li{grid-template-columns:1fr;gap:0}
+  .day-head h3{font-size:1.45rem}
+}
+</style>
+
+<div class="wrap">
+
+<header class="bib" aria-label="Objectif course">
+  <div class="bib-top">
+    <span class="eyebrow">10k HOKA Paris Centre</span>
+    <span class="eyebrow">Dim. 15 nov. 2026</span>
+  </div>
+  <div class="bib-num">10<span>K</span></div>
+  <p class="bib-sub">Rue de Rivoli → Avenue de l'Opéra</p>
+  <div class="stats">
+    <div class="stat"><small>Objectif 15 nov.</small><b>Finir à trois</b><small>en courant, sans pression sur le chrono</small></div>
+    <div class="stat"><small>Course dans</small><b id="countdown">35 jours</b><small>5 semaines de prépa</small></div>
+    <div class="stat"><small>Semaine en cours</small><b>S1 · Fondations</b><small>12 → 18 octobre</small></div>
+    <div class="stat"><small>Volume course S1</small><b class="mono">≈ 14 km</b><small>contre 11,5 km la semaine passée</small></div>
+  </div>
+</header>
+
+<section class="section" aria-labelledby="bilan">
+  <div>
+    <p class="eyebrow">Point de départ</p>
+    <h2 id="bilan">Ce que dit ton Strava</h2>
+  </div>
+  <div class="grid2">
+    <div class="panel">
+      <h3>Course à pied (6 dernières semaines)</h3>
+      <div class="scroll">
+      <table>
+        <thead><tr><th>Date</th><th>Distance</th><th>Temps</th><th>Allure</th></tr></thead>
+        <tbody>
+          <tr><td>sam. 10/10</td><td class="num">5,01 km</td><td class="num">33:35</td><td class="num">6:42</td></tr>
+          <tr><td>mer. 07/10</td><td class="num">3,94 km</td><td class="num">28:06</td><td class="num">7:08</td></tr>
+          <tr><td>mar. 06/10</td><td class="num">2,50 km</td><td class="num">15:33</td><td class="num">6:12</td></tr>
+          <tr><td>jeu. 01/10</td><td class="num">2,96 km</td><td class="num">24:18</td><td class="num">8:13</td></tr>
+          <tr><td>sam. 26/09</td><td class="num">4,09 km</td><td class="num">24:18</td><td class="num">5:56</td></tr>
+          <tr><td>dim. 13/09</td><td class="num">5,02 km</td><td class="num">34:56</td><td class="num">6:58</td></tr>
+          <tr><td>dim. 06/09</td><td class="num">5,02 km</td><td class="num">31:10</td><td class="num">6:13</td></tr>
+        </tbody>
+      </table>
+      </div>
+    </div>
+    <div class="panel">
+      <h3>Lecture du coach</h3>
+      <ul class="ex">
+        <li>Tu cours 2 à 3 fois par semaine sur 2,5 à 5 km. Ta plus longue sortie fait 5 km.</li>
+        <li>Tes allures habituelles vont de 6:00 à 7:10 /km. Ta meilleure allure sur 4 km est 5:56 /km (26/09, avec 96 m de dénivelé).</li>
+        <li>Ton 5 km du 10/10 était un effort maximal en 3 × 10 min avec 2 min de marche entre les blocs. En course, tu tournais donc autour de 6:15–6:30 /km.</li>
+        <li>Natation régulière (3 séances la semaine dernière). Strava affiche 2 400 à 3 300 m, je retiens tes vraies distances de 1 300 à 1 800 m.</li>
+        <li>Renfo encore court (environ 13 min) et un yoga d'1 h le 4/10. C'est une bonne base à structurer.</li>
+        <li>Gros atout : ton moteur cardio est entretenu par la natation. Le point à surveiller est l'adaptation des tendons et des mollets à plus de volume de course.</li>
+      </ul>
+    </div>
+  </div>
+  <div class="notice" role="note">
+    <strong>L'esprit de cette prépa</strong>
+    <p>Le 15 novembre, tu cours avec deux amis et le chrono n'est pas l'enjeu. Le but est de finir les 10 km en courant, en forme et avec le sourire. Ton niveau actuel tourne autour de 1h05–1h08, et ce sera très bien.</p>
+    <p>Le vrai objectif est plus large. Il s'agit de te renforcer et d'améliorer ta condition physique avec du sport chaque jour, toute l'année. La course montera donc en charge très progressivement. La natation, le vélo, le renfo et le yoga font l'essentiel du travail, sans impact sur les articulations.</p>
+  </div>
+</section>
+
+<section class="section" aria-labelledby="route">
+  <div>
+    <p class="eyebrow">Feuille de route</p>
+    <h2 id="route">5 semaines jusqu'au 10k, puis toute l'année</h2>
+  </div>
+  <div class="road">
+    <div class="wk now"><span class="eyebrow">S1 · 12–18 oct.</span><span class="k">Fondations</span><div class="bar"><i style="width:68%"></i></div><p>≈ 14 km de course · sortie longue 6 km · 1ère séance de fractionné</p></div>
+    <div class="wk"><span class="eyebrow">S2 · 19–25 oct.</span><span class="k">Consolidation</span><div class="bar"><i style="width:80%"></i></div><p>≈ 16 km · 5 km courus sans marcher · sortie longue 7 km</p></div>
+    <div class="wk"><span class="eyebrow">S3 · 26 oct.–1 nov.</span><span class="k">Développement</span><div class="bar"><i style="width:92%"></i></div><p>≈ 18 km · fractionné 2–3 min · sortie longue 8 km</p></div>
+    <div class="wk"><span class="eyebrow">S4 · 2–8 nov.</span><span class="k">Spécifique</span><div class="bar"><i style="width:100%"></i></div><p>≈ 19 km · blocs à allure course · sortie longue 9 km</p></div>
+    <div class="wk race"><span class="eyebrow">S5 · 9–15 nov.</span><span class="k">Affûtage</span><div class="bar"><i style="width:45%"></i></div><p>≈ 8 km + la course · volume réduit, jambes fraîches</p></div>
+  </div>
+  <p class="lead">La page sera mise à jour chaque semaine avec le détail de la suivante, ajusté selon ce que tu as réellement fait sur Strava. La course ne grimpe jamais de plus de 2 à 3 km d'une semaine à l'autre. Après le 15 novembre, le programme continue avec 2 à 3 courses par semaine, toujours varié, pour progresser toute l'année.</p>
+</section>
+
+<section class="section" aria-labelledby="zones">
+  <div>
+    <p class="eyebrow">Repères d'intensité</p>
+    <h2 id="zones">Tes allures de travail</h2>
+  </div>
+  <div class="panel scroll">
+    <table>
+      <thead><tr><th>Zone</th><th>Allure</th><th>Sensation</th><th>Usage</th></tr></thead>
+      <tbody>
+        <tr><td><b>Endurance</b></td><td class="num">7:00–7:40 /km</td><td>Tu peux parler en phrases complètes. Effort 4/10.</td><td>Footings, sortie longue. 80 % de ta course.</td></tr>
+        <tr><td><b>Allure 10k actuelle</b></td><td class="num">6:30–6:45 /km</td><td>Phrases courtes possibles. Effort 7/10.</td><td>Blocs spécifiques à partir de S3.</td></tr>
+        <tr><td><b>Allure vive</b></td><td class="num">5:40–6:00 /km</td><td>Rapide mais relâché, quelques mots seulement. Effort 7–8/10.</td><td>Fractions courtes de 1 min pour travailler la vitesse et la foulée.</td></tr>
+        <tr><td><b>Lignes droites</b></td><td class="num">≈ 4:45–5:00 /km</td><td>Rapide et relâché, pas un sprint.</td><td>Accélérations de 20 s pour la technique.</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <p class="lead">Sur la Forerunner 165, fie-toi d'abord à la sensation et au test de la parole. L'allure GPS bouge beaucoup en ville. En natation, règle bien la longueur du bassin (25 m) et appuie sur le bouton lap en cas de doute. Les chiffres de nage de cette page sont des distances réelles.</p>
+</section>
+
+<section class="section" aria-labelledby="semaine">
+  <div>
+    <p class="eyebrow">Semaine 1 · du lundi 12 au dimanche 18 octobre</p>
+    <h2 id="semaine">Le programme jour par jour</h2>
+  </div>
+  <div class="legend">
+    <span><i class="dot d-run"></i>Course</span><span><i class="dot d-swim"></i>Natation</span><span><i class="dot d-bike"></i>Vélo</span><span><i class="dot d-str"></i>Renforcement</span><span><i class="dot d-yoga"></i>Yoga / mobilité</span>
+  </div>
+  <nav class="strip" aria-label="Aperçu de la semaine">
+    <a href="#lun"><span class="dn">Lun 12</span><span class="chips"><i class="dot d-run"></i><i class="dot d-str"></i></span><small>Footing + renfo jambes</small><small class="total">≈ 60 min</small></a>
+    <a href="#mar"><span class="dn">Mar 13</span><span class="chips"><i class="dot d-yoga"></i><i class="dot d-swim"></i></span><small>Mobilité + piscine 19h</small><small class="total">≈ 75 min</small></a>
+    <a href="#mer"><span class="dn">Mer 14</span><span class="chips"><i class="dot d-bike"></i><i class="dot d-str"></i></span><small>Vélo + gainage</small><small class="total">≈ 80 min</small></a>
+    <a href="#jeu"><span class="dn">Jeu 15</span><span class="chips"><i class="dot d-run"></i><i class="dot d-yoga"></i></span><small>Fractionné + yoga doux</small><small class="total">≈ 75 min</small></a>
+    <a href="#ven"><span class="dn">Ven 16</span><span class="chips"><i class="dot d-str"></i><i class="dot d-swim"></i></span><small>Renfo + piscine technique</small><small class="total">≈ 85 min</small></a>
+    <a href="#sam"><span class="dn">Sam 17</span><span class="chips"><i class="dot d-yoga"></i><i class="dot d-bike"></i></span><small>Yoga + vélo cool</small><small class="total">≈ 75 min</small></a>
+    <a href="#dim"><span class="dn">Dim 18</span><span class="chips"><i class="dot d-run"></i><i class="dot d-yoga"></i></span><small>Sortie longue 6 km</small><small class="total">≈ 60 min</small></a>
+  </nav>
+
+  <!-- LUNDI -->
+  <article class="day" id="lun" data-day="s1-lun">
+    <div class="day-head">
+      <div><p class="eyebrow">Lundi 12 octobre · après 16h</p><h3>Relance en douceur</h3></div>
+      <label class="done"><input type="checkbox" id="chk-s1-lun"> Séance faite</label>
+    </div>
+    <div class="sess">
+      <div class="sess-head">
+        <div class="sess-title"><span class="tag t-run">Course</span><h4>Footing d'endurance + lignes droites</h4></div>
+        <span class="when">16h30 · 37 min · ≈ 4,5 km</span>
+      </div>
+      <p class="goal">Lancer la semaine en endurance pure. Tu dois finir avec l'impression que tu aurais pu continuer.</p>
+      <ol class="blocks">
+        <li><span class="dur">5 min</span><span class="what">Marche rapide puis trot très lent pour monter en température.</span></li>
+        <li class="main"><span class="dur">25 min</span><span class="what"><b>Footing à 7:00–7:40 /km.</b> Respiration nasale possible, foulée courte et fréquente.</span></li>
+        <li class="main"><span class="dur">4 × 20 s</span><span class="what"><b>Lignes droites</b> sur du plat. Accélère progressivement jusqu'à 80 % de ta vitesse max puis relâche. Récup 40 s en marchant.</span></li>
+        <li><span class="dur">3 min</span><span class="what">Trot puis marche.</span></li>
+      </ol>
+    </div>
+    <div class="sess">
+      <div class="sess-head">
+        <div class="sess-title"><span class="tag t-str">Renfo</span><h4>Renfo A · jambes de coureur</h4></div>
+        <span class="when">juste après · 22 min</span>
+      </div>
+      <p class="goal">Protéger mollets, tendons d'Achille et genoux avant la montée en volume. Au poids du corps, une marche d'escalier suffit.</p>
+      <ol class="blocks">
+        <li class="main"><span class="dur">3 tours</span><span class="what"><b>Circuit, 45 s de pause entre exercices.</b>
+          <ul class="ex">
+            <li>Squats lents (3 s en descente) × 12</li>
+            <li>Fentes arrière × 8 par jambe</li>
+            <li>Pont fessier sur une jambe × 10 par jambe</li>
+            <li>Mollets sur une marche, descente sur 3 s × 12 par jambe</li>
+            <li>Équilibre sur un pied, yeux ouverts puis fermés × 30 s par pied</li>
+          </ul></span></li>
+        <li><span class="dur">3 min</span><span class="what">Étirement mollets au mur et quadriceps debout, 45 s chaque.</span></li>
+      </ol>
+      <p class="tip">Les jambes ne doivent pas brûler. Garde 2–3 répétitions en réserve à chaque série.</p>
+    </div>
+  </article>
+
+  <!-- MARDI -->
+  <article class="day" id="mar" data-day="s1-mar">
+    <div class="day-head">
+      <div><p class="eyebrow">Mardi 13 octobre · après-midi + piscine 19h</p><h3>Aérobie sans impact</h3></div>
+      <label class="done"><input type="checkbox" id="chk-s1-mar"> Séance faite</label>
+    </div>
+    <div class="sess">
+      <div class="sess-head">
+        <div class="sess-title"><span class="tag t-yoga">Mobilité</span><h4>Routine hanches et chevilles</h4></div>
+        <span class="when">après-midi · 15 min</span>
+      </div>
+      <ol class="blocks">
+        <li><span class="dur">2 min</span><span class="what">Chat-vache à quatre pattes, lentement.</span></li>
+        <li><span class="dur">3 min</span><span class="what">Fente basse avec bras levé, 45 s par côté × 2.</span></li>
+        <li><span class="dur">3 min</span><span class="what">Position 90/90 au sol, bascules lentes d'un côté à l'autre.</span></li>
+        <li><span class="dur">3 min</span><span class="what">Genou vers le mur (mobilité cheville) × 12 par pied, puis mollet au mur 45 s.</span></li>
+        <li><span class="dur">4 min</span><span class="what">Pigeon au sol 60 s par côté, puis posture de l'enfant.</span></li>
+      </ol>
+    </div>
+    <div class="sess">
+      <div class="sess-head">
+        <div class="sess-title"><span class="tag t-swim">Natation</span><h4>Endurance aérobie · 1 600 m</h4></div>
+        <span class="when">19h00–20h00 · petit bain, 3 lignes</span>
+      </div>
+      <p class="goal">Travail cardio long et régulier qui soulage les jambes. Effort 5/10, tu dois pouvoir enchaîner sans t'accrocher au mur.</p>
+      <ol class="blocks">
+        <li><span class="dur">300 m</span><span class="what">200 m crawl souple puis 4 × 25 m éducatif rattrapé, 15 s de récup.</span></li>
+        <li class="main"><span class="dur">800 m</span><span class="what"><b>4 × 200 m crawl régulier</b>, 30 s de récup. Même temps sur les 4.</span></li>
+        <li><span class="dur">200 m</span><span class="what">8 × 25 m dos ou brasse au choix, pour relâcher les épaules.</span></li>
+        <li class="main"><span class="dur">200 m</span><span class="what"><b>4 × 50 m crawl en respirant tous les 3 temps</b>, 20 s de récup.</span></li>
+        <li><span class="dur">100 m</span><span class="what">Nage très souple.</span></li>
+      </ol>
+    </div>
+  </article>
+
+  <!-- MERCREDI -->
+  <article class="day" id="mer" data-day="s1-mer">
+    <div class="day-head">
+      <div><p class="eyebrow">Mercredi 14 octobre · après-midi</p><h3>Cardio vélo et gainage</h3></div>
+      <label class="done"><input type="checkbox" id="chk-s1-mer"> Séance faite</label>
+    </div>
+    <div class="sess">
+      <div class="sess-head">
+        <div class="sess-title"><span class="tag t-bike">Vélo</span><h4>Endurance assistance coupée</h4></div>
+        <span class="when">15h00 · 60 min</span>
+      </div>
+      <p class="goal">Développer l'endurance sans choc. Le Véligo est lourd, donc reste en souplesse plutôt qu'en force.</p>
+      <ol class="blocks">
+        <li><span class="dur">10 min</span><span class="what">Assistance au minimum, pédalage facile.</span></li>
+        <li class="main"><span class="dur">40 min</span><span class="what"><b>Assistance coupée, effort 5/10.</b> Vise 80–90 tours par minute en jouant sur les vitesses. Remets l'assistance dans les côtes raides.</span></li>
+        <li><span class="dur">10 min</span><span class="what">Retour au calme, assistance au choix.</span></li>
+      </ol>
+      <p class="tip">Option si tu préfères nager. Le créneau 17h–18h en grand bain remplace le vélo, version 1 400 m souple. Dans ce cas garde le gainage.</p>
+    </div>
+    <div class="sess">
+      <div class="sess-head">
+        <div class="sess-title"><span class="tag t-str">Renfo</span><h4>Renfo B · tronc et haut du corps</h4></div>
+        <span class="when">après le vélo · 20 min</span>
+      </div>
+      <ol class="blocks">
+        <li class="main"><span class="dur">3 tours</span><span class="what"><b>Circuit, 30 s de pause entre exercices.</b>
+          <ul class="ex">
+            <li>Planche sur les avant-bras × 40 s</li>
+            <li>Planche latérale × 25 s par côté</li>
+            <li>Dead bug lent × 8 par côté</li>
+            <li>Bird dog avec 2 s de maintien × 8 par côté</li>
+            <li>Pompes sur tes poignées (sur les genoux si besoin) × 8–12</li>
+            <li>Superman au sol × 12</li>
+          </ul></span></li>
+      </ol>
+      <p class="tip">Un tronc solide garde ta posture en fin de 10 km, quand la foulée commence à s'écraser.</p>
+    </div>
+  </article>
+
+  <!-- JEUDI -->
+  <article class="day" id="jeu" data-day="s1-jeu">
+    <div class="day-head">
+      <div><p class="eyebrow">Jeudi 15 octobre · 16h30–17h45 puis après 19h</p><h3>Premier fractionné</h3></div>
+      <label class="done"><input type="checkbox" id="chk-s1-jeu"> Séance faite</label>
+    </div>
+    <div class="sess">
+      <div class="sess-head">
+        <div class="sess-title"><span class="tag t-run">Course</span><h4>Fractionné court 6 × 1 min</h4></div>
+        <span class="when">16h30–17h25 · 50 min · ≈ 6 km</span>
+      </div>
+      <p class="goal">Réveiller la vitesse en douceur, sur des portions assez courtes pour garder une foulée propre et relâchée.</p>
+      <ol class="blocks">
+        <li><span class="dur">15 min</span><span class="what">Footing en endurance à 7:00–7:40 /km.</span></li>
+        <li><span class="dur">5 min</span><span class="what">Éducatifs sur 20 m, retour en marchant. Montées de genoux, talons-fesses, pas chassés, foulées bondissantes légères. 2 passages de chaque.</span></li>
+        <li class="main"><span class="dur">15 min</span><span class="what"><b>6 × (1 min à 5:40–6:00 /km + 1 min 30 trot lent).</b> La dernière doit être aussi rapide que la première. Si tu ralentis, arrête-toi à 5.</span></li>
+        <li><span class="dur">10 min</span><span class="what">Footing très lent puis marche.</span></li>
+        <li><span class="dur">5 min</span><span class="what">Étirements doux mollets, ischios, fléchisseurs de hanche.</span></li>
+      </ol>
+      <p class="tip">Crée la séance dans Garmin Connect (Entraînement → Séances → Course) et envoie-la sur ta 165. La montre bipera à chaque changement.</p>
+    </div>
+    <div class="sess">
+      <div class="sess-head">
+        <div class="sess-title"><span class="tag t-yoga">Yoga</span><h4>Yoga doux du soir</h4></div>
+        <span class="when">après 19h · 25 min</span>
+      </div>
+      <ol class="blocks">
+        <li><span class="dur">5 min</span><span class="what">Respiration allongée sur le dos, expiration plus longue que l'inspiration.</span></li>
+        <li><span class="dur">8 min</span><span class="what">Chien tête en bas en pédalant, fente basse, demi-pont ou pont.</span></li>
+        <li><span class="dur">8 min</span><span class="what">Pince assise jambes tendues, papillon, torsion allongée de chaque côté. 60 s par posture.</span></li>
+        <li><span class="dur">4 min</span><span class="what">Jambes au mur puis relaxation.</span></li>
+      </ol>
+    </div>
+  </article>
+
+  <!-- VENDREDI -->
+  <article class="day" id="ven" data-day="s1-ven">
+    <div class="day-head">
+      <div><p class="eyebrow">Vendredi 16 octobre · journée libre</p><h3>Force et technique de nage</h3></div>
+      <label class="done"><input type="checkbox" id="chk-s1-ven"> Séance faite</label>
+    </div>
+    <div class="sess">
+      <div class="sess-head">
+        <div class="sess-title"><span class="tag t-str">Renfo</span><h4>Renfo A+ · jambes, pieds et équilibre</h4></div>
+        <span class="when">fin de matinée · 30 min</span>
+      </div>
+      <ol class="blocks">
+        <li><span class="dur">5 min</span><span class="what">Échauffement avec 2 min de corde à sauter imaginaire, des montées de genoux sur place et des rotations de hanches.</span></li>
+        <li class="main"><span class="dur">3 tours</span><span class="what"><b>Circuit, 45 s de pause entre exercices.</b>
+          <ul class="ex">
+            <li>Squat bulgare (pied arrière sur une chaise) × 8 par jambe</li>
+            <li>Soulevé de terre sur une jambe sans charge × 8 par jambe</li>
+            <li>Montée sur chaise ou marche haute × 10 par jambe</li>
+            <li>Mollets sur une marche, jambe tendue puis genou fléchi × 10 + 10</li>
+            <li>Releveurs du pied (dos au mur, lever les pointes) × 20</li>
+            <li>Planche latérale avec élévation de jambe × 8 par côté</li>
+          </ul></span></li>
+        <li><span class="dur">3 min</span><span class="what">Étirements fessiers et mollets.</span></li>
+      </ol>
+    </div>
+    <div class="sess">
+      <div class="sess-head">
+        <div class="sess-title"><span class="tag t-swim">Natation</span><h4>Technique et vitesse · 1 400 m</h4></div>
+        <span class="when">19h15–20h15 · grand bain, 3 lignes</span>
+      </div>
+      <p class="goal">Gagner en glisse pour nager plus vite au même effort. Le créneau de 18h convient aussi si tu préfères.</p>
+      <ol class="blocks">
+        <li><span class="dur">200 m</span><span class="what">Crawl et dos alternés, très souple.</span></li>
+        <li class="main"><span class="dur">300 m</span><span class="what"><b>6 × 50 m éducatifs</b> (25 m éducatif + 25 m nage complète), 20 s de récup. Alterne rattrapé, poings fermés, 3 battements-1 bras.</span></li>
+        <li class="main"><span class="dur">600 m</span><span class="what"><b>6 × 100 m progressifs par 3</b> (facile, moyen, soutenu), 25 s de récup.</span></li>
+        <li><span class="dur">200 m</span><span class="what">4 × 50 m jambes avec planche, 20 s de récup.</span></li>
+        <li><span class="dur">100 m</span><span class="what">Nage souple de retour au calme.</span></li>
+      </ol>
+    </div>
+  </article>
+
+  <!-- SAMEDI -->
+  <article class="day" id="sam" data-day="s1-sam">
+    <div class="day-head">
+      <div><p class="eyebrow">Samedi 17 octobre · journée libre</p><h3>Récupération active</h3></div>
+      <label class="done"><input type="checkbox" id="chk-s1-sam"> Séance faite</label>
+    </div>
+    <div class="sess">
+      <div class="sess-head">
+        <div class="sess-title"><span class="tag t-yoga">Yoga</span><h4>Yoga flow coureur</h4></div>
+        <span class="when">matin · 45 min</span>
+      </div>
+      <p class="goal">Gagner en souplesse sur les zones que la course raidit. Ce sont les mollets, les ischios, les fléchisseurs de hanche et le dos.</p>
+      <ol class="blocks">
+        <li><span class="dur">8 min</span><span class="what">Respiration, chat-vache, salutations au soleil lentes × 3.</span></li>
+        <li class="main"><span class="dur">15 min</span><span class="what"><b>Debout :</b> guerrier 1 et 2, triangle, pyramide (ischios), chaise. 5 respirations par posture et par côté.</span></li>
+        <li class="main"><span class="dur">15 min</span><span class="what"><b>Au sol :</b> fente basse avec quadriceps tenu, demi-grand écart, pigeon, papillon. 90 s par posture.</span></li>
+        <li><span class="dur">7 min</span><span class="what">Torsion allongée, jambes au mur, relaxation.</span></li>
+      </ol>
+    </div>
+    <div class="sess">
+      <div class="sess-head">
+        <div class="sess-title"><span class="tag t-bike">Vélo</span><h4>Balade de décrassage</h4></div>
+        <span class="when">après-midi · 30 min</span>
+      </div>
+      <p class="goal">Faire tourner les jambes sans fatigue avant la sortie longue. Assistance allumée, effort 3/10.</p>
+    </div>
+    <p class="sess tip">Pas de piscine aujourd'hui, pour garder les jambes et les épaules fraîches. Si tu tiens au créneau de 13h30, nage 1 000 m très souple à la place du vélo.</p>
+  </article>
+
+  <!-- DIMANCHE -->
+  <article class="day" id="dim" data-day="s1-dim">
+    <div class="day-head">
+      <div><p class="eyebrow">Dimanche 18 octobre · journée libre</p><h3>Sortie longue</h3></div>
+      <label class="done"><input type="checkbox" id="chk-s1-dim"> Séance faite</label>
+    </div>
+    <div class="sess">
+      <div class="sess-head">
+        <div class="sess-title"><span class="tag t-run">Course</span><h4>Sortie longue 6 km</h4></div>
+        <span class="when">matin · 45–48 min</span>
+      </div>
+      <p class="goal">Première sortie au-delà de 5 km. On allonge la durée, pas la vitesse. Si besoin, marche 1 min toutes les 10 min. C'est autorisé et ça compte dans la séance.</p>
+      <ol class="blocks">
+        <li><span class="dur">5 min</span><span class="what">Marche rapide puis trot très lent.</span></li>
+        <li class="main"><span class="dur">≈ 35 min</span><span class="what"><b>Endurance à 7:10–7:40 /km</b>, sur un parcours plat (berges de Seine, Luxembourg, Montsouris).</span></li>
+        <li class="main"><span class="dur">≈ 7 min</span><span class="what"><b>Dernier kilomètre un peu plus vite</b>, vers 6:45 /km, seulement si tout va bien.</span></li>
+        <li><span class="dur">3 min</span><span class="what">Marche.</span></li>
+      </ol>
+    </div>
+    <div class="sess">
+      <div class="sess-head">
+        <div class="sess-title"><span class="tag t-yoga">Mobilité</span><h4>Retour au calme</h4></div>
+        <span class="when">au retour · 12 min</span>
+      </div>
+      <ol class="blocks">
+        <li><span class="dur">12 min</span><span class="what">Mollets au mur, quadriceps debout, ischios allongé avec sangle, pigeon, jambes au mur. 60 s chacun.</span></li>
+      </ol>
+      <p class="tip">Note ce soir ton ressenti (énergie, jambes, douleurs) et dis-le-moi. C'est ce qui calibre la semaine 2.</p>
+    </div>
+  </article>
+</section>
+
+<section class="section" aria-labelledby="regles">
+  <div>
+    <p class="eyebrow">Garde-fous</p>
+    <h2 id="regles">Les règles qui évitent la blessure</h2>
+  </div>
+  <div class="rules">
+    <div class="panel"><h4>La règle des 3/10</h4><p>Une gêne qui dépasse 3/10 ou qui augmente pendant la séance, on arrête la course. Tu remplaces par du vélo ou de la natation et tu m'en parles.</p></div>
+    <div class="panel"><h4>Lent, c'est le plan</h4><p>Les footings lents construisent l'endurance qui te fera tenir l'allure le jour J. Les courir trop vite te fatigue sans te faire progresser.</p></div>
+    <div class="panel"><h4>Jamais deux jours durs d'affilée</h4><p>Le fractionné du jeudi et la sortie longue du dimanche sont les deux séances clés. Le reste sert à récupérer ou à se renforcer.</p></div>
+    <div class="panel"><h4>Sommeil et carburant</h4><p>Vise 7 h 30 de sommeil. Mange une collation glucides + protéines dans l'heure après la course et la natation.</p></div>
+    <div class="panel"><h4>Une journée trop chargée</h4><p>Garde la séance principale et saute le complément. Une séance courte vaut mieux que rien, et un jour off vaut mieux qu'une blessure.</p></div>
+    <div class="panel"><h4>Chaussures</h4><p>Vérifie le kilométrage de tes chaussures. Au-delà de 600–700 km l'amorti chute. Ne cours pas la course avec une paire neuve.</p></div>
+  </div>
+</section>
+
+<footer>
+  Programme établi le 11 octobre 2026 à partir de l'historique Strava (88 activités). Prochaine mise à jour : semaine 2, du 19 au 25 octobre.
+</footer>
+</div>
+
+<script>
+(function(){
+  // Compte à rebours jusqu'au départ
+  var race = new Date(2026,10,15);
+  var now = new Date(); now.setHours(0,0,0,0);
+  var d = Math.round((race - now)/86400000);
+  var el = document.getElementById('countdown');
+  if (el) el.textContent = d > 1 ? d + ' jours' : d === 1 ? 'Demain' : d === 0 ? "Aujourd'hui" : 'Terminée';
+
+  // Cases « séance faite », mémorisées dans ce navigateur
+  document.querySelectorAll('.day').forEach(function(day){
+    var key = 'prepa10k-' + day.dataset.day;
+    var box = day.querySelector('input[type=checkbox]');
+    if (!box) return;
+    try { box.checked = localStorage.getItem(key) === '1'; } catch(e){}
+    day.classList.toggle('is-done', box.checked);
+    box.addEventListener('change', function(){
+      day.classList.toggle('is-done', box.checked);
+      try { localStorage.setItem(key, box.checked ? '1' : '0'); } catch(e){}
+    });
+  });
+})();
+</script>
