@@ -109,6 +109,13 @@ ul.ex{margin:6px 0 0;padding-left:18px;display:grid;gap:3px;font-size:.95rem}
 .tip{font-size:.92rem;border-left:3px solid var(--accent);padding:4px 0 4px 12px;color:var(--muted)}
 .report{padding:14px 18px;background:var(--accent-soft);border-top:1px solid var(--line);display:grid;gap:6px;font-size:.95rem}
 .report .eyebrow{color:var(--accent)}
+details.archive{background:var(--surface);border:1px solid var(--line);border-radius:12px}
+details.archive>summary{cursor:pointer;padding:16px 18px;display:grid;gap:4px;list-style:none}
+details.archive>summary::-webkit-details-marker{display:none}
+details.archive>summary .arch-title{font-family:var(--f-display);font-size:1.35rem;font-weight:600}
+details.archive>summary .arch-title::after{content:" ▸";color:var(--muted)}
+details.archive[open]>summary .arch-title::after{content:" ▾"}
+.archive-body{display:grid;gap:16px;padding:0 18px 18px}
 .report p{max-width:76ch}
 .done{display:inline-flex;align-items:center;gap:8px;font-size:.9rem;color:var(--muted);cursor:pointer;user-select:none}
 .done input{width:18px;height:18px;accent-color:var(--accent);cursor:pointer}
@@ -139,8 +146,8 @@ a{color:var(--accent)}
   <div class="stats">
     <div class="stat"><small>Objectif 15 nov.</small><b>Finir à trois</b><small>en courant, sans pression sur le chrono</small></div>
     <div class="stat"><small>Course dans</small><b id="countdown">35 jours</b><small>5 semaines de prépa</small></div>
-    <div class="stat"><small>Semaine en cours</small><b>S1 · Fondations</b><small>12 → 18 octobre</small></div>
-    <div class="stat"><small>Volume course S1</small><b class="mono">≈ 14 km</b><small>contre 11,5 km la semaine passée</small></div>
+    <div class="stat"><small>Semaine en cours</small><b>S2 · Consolidation</b><small>19 → 25 octobre</small></div>
+    <div class="stat"><small>Volume course S2</small><b class="mono">≈ 17 km</b><small>contre ≈ 15 km en semaine 1</small></div>
   </div>
 </header>
 
@@ -192,8 +199,8 @@ a{color:var(--accent)}
     <h2 id="route">5 semaines jusqu'au 10k, puis toute l'année</h2>
   </div>
   <div class="road">
-    <div class="wk now"><span class="eyebrow">S1 · 12–18 oct.</span><span class="k">Fondations</span><div class="bar"><i style="width:68%"></i></div><p>≈ 14 km de course · sortie longue 6 km · 1ère séance de fractionné</p></div>
-    <div class="wk"><span class="eyebrow">S2 · 19–25 oct.</span><span class="k">Consolidation</span><div class="bar"><i style="width:80%"></i></div><p>≈ 16 km · fractions d'1 min un peu moins vite, récup plus longue · sortie longue 7 km</p></div>
+    <div class="wk"><span class="eyebrow">S1 · 12–18 oct.</span><span class="k">Fondations</span><div class="bar"><i style="width:68%"></i></div><p>≈ 14 km de course · sortie longue 6 km · 1ère séance de fractionné</p></div>
+    <div class="wk now"><span class="eyebrow">S2 · 19–25 oct.</span><span class="k">Consolidation</span><div class="bar"><i style="width:80%"></i></div><p>≈ 16 km · fractions d'1 min un peu moins vite, récup plus longue · sortie longue 7 km</p></div>
     <div class="wk"><span class="eyebrow">S3 · 26 oct.–1 nov.</span><span class="k">Développement</span><div class="bar"><i style="width:92%"></i></div><p>≈ 18 km · fractions de 1 min 30–2 min · sortie longue 8 km</p></div>
     <div class="wk"><span class="eyebrow">S4 · 2–8 nov.</span><span class="k">Spécifique</span><div class="bar"><i style="width:100%"></i></div><p>≈ 19 km · blocs à allure course · sortie longue 9 km</p></div>
     <div class="wk race"><span class="eyebrow">S5 · 9–15 nov.</span><span class="k">Affûtage</span><div class="bar"><i style="width:45%"></i></div><p>≈ 8 km + la course · volume réduit, jambes fraîches</p></div>
@@ -222,13 +229,233 @@ a{color:var(--accent)}
 
 <section class="section" aria-labelledby="semaine">
   <div>
-    <p class="eyebrow">Semaine 1 · du lundi 12 au dimanche 18 octobre</p>
+    <p class="eyebrow">Semaine 2 · du lundi 19 au dimanche 25 octobre</p>
     <h2 id="semaine">Le programme jour par jour</h2>
   </div>
+  <p class="lead">Semaine chargée, donc des séances plus courtes en semaine et l'essentiel le week-end. Les trois séances clés sont le fractionné de mardi, la natation de samedi et la sortie longue de dimanche. Si une journée déborde, ce sont elles qu'on garde. Tout le reste peut sauter sans regret.</p>
   <div class="legend">
     <span><i class="dot d-run"></i>Course</span><span><i class="dot d-swim"></i>Natation</span><span><i class="dot d-bike"></i>Vélo</span><span><i class="dot d-str"></i>Renforcement</span><span><i class="dot d-yoga"></i>Yoga / mobilité</span>
   </div>
-  <nav class="strip" aria-label="Aperçu de la semaine">
+  <nav class="strip" aria-label="Aperçu de la semaine 2">
+    <a href="#s2-lun"><span class="dn">Lun 19</span><span class="chips"><i class="dot d-str"></i><i class="dot d-yoga"></i></span><small>Gainage + mobilité</small><small class="total">≈ 40 min</small></a>
+    <a href="#s2-mar"><span class="dn">Mar 20</span><span class="chips"><i class="dot d-run"></i><i class="dot d-yoga"></i></span><small>Fractionné le matin</small><small class="total">≈ 60 min</small></a>
+    <a href="#s2-mer"><span class="dn">Mer 21</span><span class="chips"><i class="dot d-swim"></i></span><small>Piscine 17h courte</small><small class="total">≈ 45 min</small></a>
+    <a href="#s2-jeu"><span class="dn">Jeu 22</span><span class="chips"><i class="dot d-run"></i><i class="dot d-str"></i></span><small>Footing + renfo jambes</small><small class="total">≈ 70 min</small></a>
+    <a href="#s2-ven"><span class="dn">Ven 23</span><span class="chips"><i class="dot d-yoga"></i></span><small>Down Dog court</small><small class="total">≈ 25 min</small></a>
+    <a href="#s2-sam"><span class="dn">Sam 24</span><span class="chips"><i class="dot d-swim"></i><i class="dot d-yoga"></i></span><small>Piscine 13h30</small><small class="total">≈ 70 min</small></a>
+    <a href="#s2-dim"><span class="dn">Dim 25</span><span class="chips"><i class="dot d-run"></i><i class="dot d-yoga"></i></span><small>Sortie longue 7 km</small><small class="total">≈ 70 min</small></a>
+  </nav>
+
+  <!-- S2 LUNDI -->
+  <article class="day" id="s2-lun" data-day="s2-lun">
+    <div class="day-head">
+      <div><p class="eyebrow">Lundi 19 octobre · après 18h30</p><h3>Récupération et gainage</h3></div>
+      <label class="done"><input type="checkbox" id="chk-s2-lun"> Séance faite</label>
+    </div>
+    <div class="sess">
+      <div class="sess-head">
+        <div class="sess-title"><span class="tag t-str">Renfo</span><h4>Renfo B · tronc et haut du corps</h4></div>
+        <span class="when">à la maison · 25 min</span>
+      </div>
+      <p class="goal">Lendemain de sortie longue, donc rien pour les jambes. On renforce le tronc, qui tient ta posture en fin de course.</p>
+      <ol class="blocks">
+        <li class="main"><span class="dur">3 tours</span><span class="what"><b>Circuit. 30 s de pause après chaque exercice, 1 min 30 entre deux tours.</b>
+          <ul class="ex">
+            <li>Planche sur les avant-bras × 45 s (5 s de plus que la semaine 1)</li>
+            <li>Planche latérale × 30 s par côté</li>
+            <li>Dead bug lent × 10 par côté</li>
+            <li>Bird dog avec 2 s de maintien × 10 par côté</li>
+            <li>Pompes sur tes poignées × 8–12</li>
+            <li>Superman au sol × 12</li>
+          </ul></span></li>
+      </ol>
+    </div>
+    <div class="sess">
+      <div class="sess-head">
+        <div class="sess-title"><span class="tag t-yoga">Mobilité</span><h4>Jambes après la sortie longue</h4></div>
+        <span class="when">juste après · 15 min</span>
+      </div>
+      <ol class="blocks">
+        <li><span class="dur">15 min</span><span class="what">Mollets au mur, ischios allongé avec ta sangle, fente basse, pigeon, papillon, jambes au mur. 90 s par posture.</span></li>
+      </ol>
+    </div>
+  </article>
+
+  <!-- S2 MARDI -->
+  <article class="day" id="s2-mar" data-day="s2-mar">
+    <div class="day-head">
+      <div><p class="eyebrow">Mardi 20 octobre · matin</p><h3>Fractionné, version maîtrisée</h3></div>
+      <label class="done"><input type="checkbox" id="chk-s2-mar"> Séance faite</label>
+    </div>
+    <div class="sess">
+      <div class="sess-head">
+        <div class="sess-title"><span class="tag t-run">Course</span><h4>Fractionné 6 × 1 min</h4></div>
+        <span class="when">matin · 55 min · ≈ 6 km</span>
+      </div>
+      <p class="goal">Même format que jeudi dernier, avec deux changements. Les fractions partent moins vite et la récupération dure 2 min. Le but est de boucler les 6 à la même vitesse.</p>
+      <ol class="blocks">
+        <li><span class="dur">15 min</span><span class="what">Footing en endurance, effort 4/10. Tu dois pouvoir parler en phrases complètes.</span></li>
+        <li><span class="dur">5 min</span><span class="what">Éducatifs sur 20 m, retour en marchant. Montées de genoux, talons-fesses, pas chassés. 2 passages de chaque.</span></li>
+        <li class="main"><span class="dur">18 min</span><span class="what"><b>6 × (1 min à effort 7/10 + 2 min de trot lent).</b> La 1re doit te sembler presque trop facile. Si tu dois ralentir, arrête-toi, comme jeudi.</span></li>
+        <li class="main"><span class="dur">10 min</span><span class="what"><b>Retour au calme en trot très lent.</b> Ne le saute pas cette fois, c'est lui qui t'aide à récupérer.</span></li>
+        <li><span class="dur">5 min</span><span class="what">Étirements doux mollets, ischios, fléchisseurs de hanche.</span></li>
+      </ol>
+      <p class="tip">Sur ton minuteur d'intervalles, règle 6 répétitions de 1 min de travail et 2 min de repos, avec un signal sonore. Lance-le à la fin des éducatifs.</p>
+    </div>
+  </article>
+
+  <!-- S2 MERCREDI -->
+  <article class="day" id="s2-mer" data-day="s2-mer">
+    <div class="day-head">
+      <div><p class="eyebrow">Mercredi 21 octobre · piscine 17h</p><h3>Natation courte</h3></div>
+      <label class="done"><input type="checkbox" id="chk-s2-mer"> Séance faite</label>
+    </div>
+    <div class="sess">
+      <div class="sess-head">
+        <div class="sess-title"><span class="tag t-swim">Natation</span><h4>Endurance souple · 1 200 m</h4></div>
+        <span class="when">17h00–18h00 · grand bain, 2 lignes · 45 min dans l'eau</span>
+      </div>
+      <p class="goal">Une séance raccourcie pour tenir dans le créneau même si tu arrives un peu après 17h. Effort 5/10.</p>
+      <ol class="blocks">
+        <li><span class="dur">200 m</span><span class="what">Crawl et dos alternés tous les 50 m, très souple.</span></li>
+        <li class="main"><span class="dur">200 m</span><span class="what"><b>4 × 50 m éducatifs</b> (25 m rattrapé + 25 m nage complète), 20 s de récup.</span></li>
+        <li class="main"><span class="dur">600 m</span><span class="what"><b>3 × 200 m crawl régulier</b>, 30 s de récup. Même temps sur les trois.</span></li>
+        <li><span class="dur">200 m</span><span class="what">Dos ou brasse au choix, très souple.</span></li>
+      </ol>
+      <p class="tip">Si tu ne peux pas être à la piscine avant 17h20, remplace par une séance Down Dog de 30 min chez toi (réglages de vendredi).</p>
+    </div>
+  </article>
+
+  <!-- S2 JEUDI -->
+  <article class="day" id="s2-jeu" data-day="s2-jeu">
+    <div class="day-head">
+      <div><p class="eyebrow">Jeudi 22 octobre · après 17h</p><h3>Endurance et jambes</h3></div>
+      <label class="done"><input type="checkbox" id="chk-s2-jeu"> Séance faite</label>
+    </div>
+    <div class="sess">
+      <div class="sess-head">
+        <div class="sess-title"><span class="tag t-run">Course</span><h4>Footing d'endurance + lignes droites</h4></div>
+        <span class="when">fin d'après-midi · 40 min · ≈ 5 km</span>
+      </div>
+      <ol class="blocks">
+        <li><span class="dur">5 min</span><span class="what">Marche rapide puis trot très lent.</span></li>
+        <li class="main"><span class="dur">30 min</span><span class="what"><b>Footing à effort 4/10</b>, en parlant en phrases complètes. Sans montre, si tu as un doute, ralentis.</span></li>
+        <li class="main"><span class="dur">4 × 20 s</span><span class="what"><b>Lignes droites</b>, accélérations progressives et relâchées. Récup 40 s en marchant.</span></li>
+      </ol>
+    </div>
+    <div class="sess">
+      <div class="sess-head">
+        <div class="sess-title"><span class="tag t-str">Renfo</span><h4>Renfo A · jambes de coureur</h4></div>
+        <span class="when">au retour · 30 min</span>
+      </div>
+      <ol class="blocks">
+        <li class="main"><span class="dur">3 tours</span><span class="what"><b>Circuit. 45 s de pause après chaque exercice, 2 min entre deux tours.</b>
+          <ul class="ex">
+            <li>Squats lents (3 s en descente) × 12</li>
+            <li>Fentes arrière × 10 par jambe (2 de plus que la semaine 1)</li>
+            <li>Pont fessier sur une jambe × 12 par jambe</li>
+            <li>Mollets sur une marche, descente sur 3 s × 12 par jambe</li>
+            <li>Équilibre sur un pied, yeux fermés × 30 s par pied</li>
+          </ul></span></li>
+        <li><span class="dur">3 min</span><span class="what">Étirement mollets au mur et quadriceps debout, 45 s chaque.</span></li>
+      </ol>
+    </div>
+  </article>
+
+  <!-- S2 VENDREDI -->
+  <article class="day" id="s2-ven" data-day="s2-ven">
+    <div class="day-head">
+      <div><p class="eyebrow">Vendredi 23 octobre · entre 17h15 et 18h15</p><h3>Journée légère</h3></div>
+      <label class="done"><input type="checkbox" id="chk-s2-ven"> Séance faite</label>
+    </div>
+    <div class="sess">
+      <div class="sess-head">
+        <div class="sess-title"><span class="tag t-yoga">Yoga</span><h4>Down Dog court · hanches</h4></div>
+        <span class="when">25 min</span>
+      </div>
+      <p class="goal">Ta journée est pleine du matin au soir. Une courte séance pour délier le corps suffit. Si tu n'as vraiment pas le temps, c'est ton jour de repos.</p>
+      <ol class="blocks">
+        <li class="main"><span class="dur">Type</span><span class="what"><b>Hatha.</b></span></li>
+        <li class="main"><span class="dur">Niveau</span><span class="what"><b>Débutant 2.</b></span></li>
+        <li class="main"><span class="dur">Boost</span><span class="what"><b>Hanches.</b></span></li>
+        <li class="main"><span class="dur">Rythme</span><span class="what"><b>Lent.</b></span></li>
+        <li class="main"><span class="dur">Durée</span><span class="what"><b>25 min</b>, avec un savasana de <b>3 min</b>.</span></li>
+      </ol>
+    </div>
+  </article>
+
+  <!-- S2 SAMEDI -->
+  <article class="day" id="s2-sam" data-day="s2-sam">
+    <div class="day-head">
+      <div><p class="eyebrow">Samedi 24 octobre · piscine 13h30</p><h3>Grosse séance de nage</h3></div>
+      <label class="done"><input type="checkbox" id="chk-s2-sam"> Séance faite</label>
+    </div>
+    <div class="sess">
+      <div class="sess-head">
+        <div class="sess-title"><span class="tag t-swim">Natation</span><h4>Endurance longue · 1 500 m</h4></div>
+        <span class="when">13h30–14h30 · grand bain, 3 lignes</span>
+      </div>
+      <p class="goal">Ta séance de cardio la plus longue de la semaine, sans aucun impact. Effort 5/10, régulier du début à la fin.</p>
+      <ol class="blocks">
+        <li><span class="dur">300 m</span><span class="what">200 m crawl souple puis 4 × 25 m éducatif poings fermés, 15 s de récup.</span></li>
+        <li class="main"><span class="dur">800 m</span><span class="what"><b>2 × 400 m crawl régulier</b>, 1 min de récup. Compte tes longueurs, soit 16 par série dans un bassin de 25 m.</span></li>
+        <li><span class="dur">200 m</span><span class="what">4 × 50 m jambes avec planche, 20 s de récup.</span></li>
+        <li><span class="dur">200 m</span><span class="what">Dos ou brasse au choix, très souple.</span></li>
+      </ol>
+    </div>
+    <div class="sess">
+      <div class="sess-head">
+        <div class="sess-title"><span class="tag t-yoga">Mobilité</span><h4>Hanches et chevilles</h4></div>
+        <span class="when">en fin de journée · 10 min</span>
+      </div>
+      <ol class="blocks">
+        <li><span class="dur">10 min</span><span class="what">Chat-vache, fente basse, 90/90, genou vers le mur. La routine de mardi dernier en version courte.</span></li>
+      </ol>
+    </div>
+  </article>
+
+  <!-- S2 DIMANCHE -->
+  <article class="day" id="s2-dim" data-day="s2-dim">
+    <div class="day-head">
+      <div><p class="eyebrow">Dimanche 25 octobre · passage à l'heure d'hiver</p><h3>Sortie longue</h3></div>
+      <label class="done"><input type="checkbox" id="chk-s2-dim"> Séance faite</label>
+    </div>
+    <div class="sess">
+      <div class="sess-head">
+        <div class="sess-title"><span class="tag t-run">Course</span><h4>Sortie longue 7 km</h4></div>
+        <span class="when">matin · 52–55 min</span>
+      </div>
+      <p class="goal">Un kilomètre de plus que la semaine 1, toujours à effort facile. Si besoin, marche 1 min toutes les 10 min.</p>
+      <ol class="blocks">
+        <li><span class="dur">5 min</span><span class="what">Marche rapide puis trot très lent.</span></li>
+        <li class="main"><span class="dur">≈ 45 min</span><span class="what"><b>Endurance à effort 4/10</b>, sur un parcours plat. Tu dois pouvoir parler du début à la fin.</span></li>
+        <li><span class="dur">3 min</span><span class="what">Marche.</span></li>
+      </ol>
+      <p class="tip">Prends une petite gourde ou repère une fontaine à mi-parcours. Tu gagnes une heure de sommeil cette nuit, profites-en.</p>
+    </div>
+    <div class="sess">
+      <div class="sess-head">
+        <div class="sess-title"><span class="tag t-yoga">Mobilité</span><h4>Retour au calme</h4></div>
+        <span class="when">au retour · 12 min</span>
+      </div>
+      <ol class="blocks">
+        <li><span class="dur">12 min</span><span class="what">Mollets au mur, quadriceps debout, ischios avec la sangle, pigeon, jambes au mur. 60 s chacun.</span></li>
+      </ol>
+    </div>
+  </article>
+
+  <p class="tip">Envie de vélo sans y consacrer de créneau ? Fais un de tes trajets de la semaine en Véligo avec l'assistance au minimum. C'est du cardio en bonus, sans obligation.</p>
+</section>
+
+
+<section class="section" aria-labelledby="semaine1">
+  <details class="archive">
+    <summary><span class="eyebrow">Semaine 1 · 12–18 octobre · terminée</span><span id="semaine1" class="arch-title">Revoir la semaine 1 et ses bilans</span></summary>
+    <div class="archive-body">
+  <div class="legend">
+    <span><i class="dot d-run"></i>Course</span><span><i class="dot d-swim"></i>Natation</span><span><i class="dot d-bike"></i>Vélo</span><span><i class="dot d-str"></i>Renforcement</span><span><i class="dot d-yoga"></i>Yoga / mobilité</span>
+  </div>
+  <nav class="strip" aria-label="Aperçu de la semaine 1">
     <a href="#lun"><span class="dn">Lun 12</span><span class="chips"><i class="dot d-run"></i><i class="dot d-str"></i></span><small>Footing + renfo jambes</small><small class="total">≈ 70 min</small></a>
     <a href="#mar"><span class="dn">Mar 13</span><span class="chips"><i class="dot d-yoga"></i><i class="dot d-swim"></i></span><small>Mobilité + piscine 19h</small><small class="total">≈ 75 min</small></a>
     <a href="#mer"><span class="dn">Mer 14</span><span class="chips"><i class="dot d-swim"></i><i class="dot d-str"></i></span><small>Piscine 17h + gainage</small><small class="total">≈ 85 min</small></a>
@@ -466,6 +693,7 @@ a{color:var(--accent)}
       <p class="goal">Faire tourner les jambes sans fatigue avant la sortie longue. Assistance allumée, effort 3/10.</p>
     </div>
     <p class="sess tip">La balade à vélo reste facultative. Fais-la seulement si tu en as envie après le yoga. Pas de piscine aujourd'hui, pour garder les jambes et les épaules fraîches.</p>
+    <div class="report"><span class="eyebrow">Bilan · yoga fait, vélo laissé de côté</span><p>Séance Down Dog de 45 min réalisée. Le vélo était facultatif, pas de souci.</p></div>
   </article>
 
   <!-- DIMANCHE -->
@@ -498,6 +726,8 @@ a{color:var(--accent)}
       <p class="tip">Note ce soir ton ressenti (énergie, jambes, douleurs) et dis-le-moi. C'est ce qui calibre la semaine 2.</p>
     </div>
   </article>
+    </div>
+  </details>
 </section>
 
 <section class="section" aria-labelledby="regles">
@@ -516,7 +746,7 @@ a{color:var(--accent)}
 </section>
 
 <footer>
-  Programme établi le 11 octobre 2026 à partir de l'historique Strava (88 activités). Prochaine mise à jour : semaine 2, du 19 au 25 octobre.
+  Programme établi le 11 octobre 2026 à partir de l'historique Strava, semaine 2 ajoutée le 17 octobre. Prochaine mise à jour : semaine 3, du 26 octobre au 1er novembre.
 </footer>
 </div>
 
