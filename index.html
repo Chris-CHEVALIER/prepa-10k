@@ -114,6 +114,7 @@ ul.ex{margin:6px 0 0;padding-left:18px;display:grid;gap:3px;font-size:.95rem}
 .tip{font-size:.92rem;border-left:3px solid var(--accent);padding:4px 0 4px 12px;color:var(--muted)}
 .report{padding:14px 18px;background:var(--accent-soft);border-top:1px solid var(--line);display:grid;gap:6px;font-size:.95rem}
 .report .eyebrow{color:var(--accent)}
+.today-link{color:var(--accent);font-weight:600;font-size:.85rem;text-decoration:none;margin-top:4px}.today-link:hover{text-decoration:underline}
 .weeknav{position:sticky;top:env(safe-area-inset-top,0px);z-index:5;background:var(--bg);padding-block:10px;display:flex;align-items:center;gap:8px;border-bottom:1px solid var(--line)}
 .weeknav .tabs{display:flex;gap:6px;overflow-x:auto;flex:1;min-width:0}
 .weeknav button{font:inherit;cursor:pointer;border:1px solid var(--line);background:var(--surface);color:var(--ink);border-radius:8px;padding:6px 12px;display:grid;gap:0;text-align:left;flex:none}
@@ -157,7 +158,7 @@ a{color:var(--accent)}
   <div class="stats">
     <div class="stat"><small>Objectif 15 nov.</small><b>Finir à trois</b><small>en courant, sans pression sur le chrono</small></div>
     <div class="stat"><small>Course dans</small><b id="countdown">35 jours</b><small>5 semaines de prépa</small></div>
-    <div class="stat"><small id="st-label">Semaine en cours</small><b id="st-name">S2 · Consolidation</b><small id="st-range">19 → 25 octobre</small></div>
+    <div class="stat"><small id="st-label">Semaine en cours</small><b id="st-name">S2 · Consolidation</b><small id="st-range">19 → 25 octobre</small><a id="st-today" class="today-link" href="#" hidden>Voir la séance du jour ↓</a></div>
     <div class="stat"><small id="st-kmlabel">Volume course S2</small><b class="mono" id="st-km">≈ 17 km</b><small id="st-kmnote">contre ≈ 15 km en semaine 1</small></div>
   </div>
 </header>
@@ -539,7 +540,7 @@ a{color:var(--accent)}
     <span><i class="dot d-run"></i>Course</span><span><i class="dot d-swim"></i>Natation</span><span><i class="dot d-bike"></i>Vélo</span><span><i class="dot d-str"></i>Renforcement</span><span><i class="dot d-yoga"></i>Yoga / mobilité</span>
   </div>
   <nav class="strip" aria-label="Aperçu de la semaine 2">
-    <a href="#s2-lun"><span class="dn">Lun 19</span><span class="chips"><i class="dot d-bike"></i><i class="dot d-str"></i><i class="dot d-yoga"></i></span><small>Vélo souple + gainage</small><small class="total">≈ 40 min + vélo</small></a>
+    <a href="#s2-lun"><span class="dn">Lun 19</span><span class="chips"><i class="dot d-bike"></i><i class="dot d-str"></i><i class="dot d-yoga"></i></span><small>Vélo souple + gainage</small><small class="total">≈ 25 min + vélo</small></a>
     <a href="#s2-mar"><span class="dn">Mar 20</span><span class="chips"><i class="dot d-run"></i><i class="dot d-bike"></i></span><small>Fractionné le matin</small><small class="total">≈ 60 min + vélo</small></a>
     <a href="#s2-mer"><span class="dn">Mer 21</span><span class="chips"><i class="dot d-bike"></i><i class="dot d-yoga"></i></span><small>Retour vélo sans assistance + Down Dog</small><small class="total">≈ 75 min</small></a>
     <a href="#s2-jeu"><span class="dn">Jeu 22</span><span class="chips"><i class="dot d-bike"></i><i class="dot d-run"></i><i class="dot d-str"></i></span><small>Footing + renfo jambes</small><small class="total">≈ 70 min + vélo</small></a>
@@ -585,11 +586,12 @@ a{color:var(--accent)}
     </div>
     <div class="sess">
       <div class="sess-head">
-        <div class="sess-title"><span class="tag t-yoga">Mobilité</span><h4>Jambes après la sortie longue</h4></div>
-        <span class="when">juste après · 15 min</span>
+        <div class="sess-title"><span class="tag t-yoga">Mobilité</span><h4>Facultatif · si les jambes tirent</h4></div>
+        <span class="when">juste après · 5–10 min</span>
       </div>
+      <p class="goal">Tu as déjà fait tes étirements hier après la course. Ce bloc ne sert que si les mollets ou les cuisses sont raides aujourd'hui.</p>
       <ol class="blocks">
-        <li><span class="dur">15 min</span><span class="what">Mollets au mur, ischios allongé avec ta sangle, fente basse, pigeon, papillon, jambes au mur. 90 s par posture.</span></li>
+        <li><span class="dur">5–10 min</span><span class="what">Seulement les zones qui tirent, parmi mollets au mur, ischios avec ta sangle, pigeon et jambes au mur. 60 s par posture.</span></li>
       </ol>
     </div>
   </article>
@@ -877,6 +879,15 @@ a{color:var(--accent)}
     return false;
   }
   window.addEventListener('hashchange', fromHash);
+  // Au chargement, une ancienne ancre (favori, lien d'une semaine passée) ne doit pas masquer la semaine en cours
+  var h = location.hash.slice(1), hEl = h && document.getElementById(h), hW = hEl && hEl.closest('section.week');
+  if (hW && current >= 0 && weeks.indexOf(hW) !== current) { try { history.replaceState(null, '', location.pathname + location.search); } catch(e){} }
+  // Raccourci vers la séance du jour
+  if (current >= 0) {
+    var dayIdx = (now.getDay() + 6) % 7, todays = weeks[current].querySelectorAll('article.day')[dayIdx];
+    var link = document.getElementById('st-today');
+    if (todays && link) { link.href = '#' + todays.id; link.hidden = false; }
+  }
   if (!fromHash()) show(current >= 0 ? current : (now < parse(weeks[0].dataset.start) ? 0 : weeks.length - 1));
 
   // Cases « séance faite », mémorisées dans ce navigateur
