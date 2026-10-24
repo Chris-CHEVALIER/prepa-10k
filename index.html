@@ -245,7 +245,7 @@ a{color:var(--accent)}
   <button type="button" class="arrow" id="wk-next" aria-label="Semaine suivante">›</button>
 </nav>
 
-<section class="section week" id="s1" aria-labelledby="h-s1" data-start="2026-10-12" data-end="2026-10-18" data-name="S1 · Fondations" data-range="12 → 18 octobre" data-km="≈ 14 km" data-km-note="contre 11,5 km la semaine précédente">
+<section class="section week" id="s1" data-archived hidden aria-labelledby="h-s1" data-start="2026-10-12" data-end="2026-10-18" data-name="S1 · Fondations" data-range="12 → 18 octobre" data-km="≈ 14 km" data-km-note="contre 11,5 km la semaine précédente">
   <div>
     <p class="eyebrow">Semaine 1 · du lundi 12 au dimanche 18 octobre</p>
     <h2 id="h-s1">Le programme jour par jour</h2>
@@ -834,7 +834,8 @@ a{color:var(--accent)}
   if (el) el.textContent = d > 1 ? d + ' jours' : d === 1 ? 'Demain' : d === 0 ? "Aujourd'hui" : 'Terminée';
 
   // Navigation entre les semaines
-  var weeks = Array.prototype.slice.call(document.querySelectorAll('section.week'));
+  // Les semaines marquées data-archived restent dans le source mais ne sont plus affichées
+  var weeks = Array.prototype.slice.call(document.querySelectorAll('section.week:not([data-archived])'));
   var tabs = document.getElementById('wk-tabs');
   var prev = document.getElementById('wk-prev'), next = document.getElementById('wk-next');
   function parse(v){ var p = v.split('-'); return new Date(+p[0], +p[1]-1, +p[2]); }
@@ -846,7 +847,7 @@ a{color:var(--accent)}
     var b = document.createElement('button');
     b.type = 'button'; b.className = 'tab'; b.setAttribute('role','tab');
     b.setAttribute('aria-controls', w.id);
-    b.innerHTML = '<b>Semaine ' + (i+1) + (i === current ? '<span class="now-badge">en cours</span>' : '') + '</b><small>' + w.dataset.range + '</small>';
+    b.innerHTML = '<b>Semaine ' + w.id.slice(1) + (i === current ? '<span class="now-badge">en cours</span>' : '') + '</b><small>' + w.dataset.range + '</small>';
     b.addEventListener('click', function(){ show(i, true); });
     tabs.appendChild(b);
     return b;
@@ -861,7 +862,7 @@ a{color:var(--accent)}
     document.getElementById('st-label').textContent = active === current ? 'Semaine en cours' : 'Semaine affichée';
     document.getElementById('st-name').textContent = w.dataset.name;
     document.getElementById('st-range').textContent = w.dataset.range;
-    document.getElementById('st-kmlabel').textContent = 'Volume course S' + (active+1);
+    document.getElementById('st-kmlabel').textContent = 'Volume course S' + w.id.slice(1);
     document.getElementById('st-km').textContent = w.dataset.km;
     document.getElementById('st-kmnote').textContent = w.dataset.kmNote;
     if (user) {
@@ -875,7 +876,7 @@ a{color:var(--accent)}
     var id = location.hash.slice(1);
     var el = id && document.getElementById(id);
     var w = el && el.closest('section.week');
-    if (w) { show(weeks.indexOf(w)); if (el !== w) el.scrollIntoView(); return true; }
+    if (w && weeks.indexOf(w) >= 0) { show(weeks.indexOf(w)); if (el !== w) el.scrollIntoView(); return true; }
     return false;
   }
   window.addEventListener('hashchange', fromHash);
