@@ -84,6 +84,9 @@ td.num{font-family:var(--f-mono);font-variant-numeric:tabular-nums;white-space:n
 /* Semaine (aperçu) */
 .strip{display:grid;grid-template-columns:repeat(7,minmax(110px,1fr));gap:8px;overflow-x:auto;padding-bottom:4px}
 .strip a{color:inherit;text-decoration:none;background:var(--surface);border:1px solid var(--line);border-radius:10px;padding:10px;display:grid;gap:6px;align-content:start}
+.past-day[hidden]{display:none!important}
+.past-toggle{justify-self:start;background:none;border:1px solid var(--line);color:var(--muted);border-radius:999px;padding:6px 14px;font:inherit;font-size:.85rem;cursor:pointer}
+.past-toggle:hover{border-color:var(--accent);color:var(--accent)}
 .strip a:hover,.strip a:focus-visible{border-color:var(--accent);outline:none}
 .strip .dn{font-family:var(--f-display);font-weight:700;font-size:1.1rem}
 .strip .chips{display:flex;flex-wrap:wrap;gap:4px}
@@ -876,8 +879,36 @@ a{color:var(--accent)}
     var id = location.hash.slice(1);
     var el = id && document.getElementById(id);
     var w = el && el.closest('section.week');
-    if (w && weeks.indexOf(w) >= 0) { show(weeks.indexOf(w)); if (el !== w) el.scrollIntoView(); return true; }
+    if (w && weeks.indexOf(w) >= 0) { if (el.hidden || (el.closest('.day') || {}).hidden) togglePast(true); show(weeks.indexOf(w)); if (el !== w) el.scrollIntoView(); return true; }
     return false;
+  }
+  // Jours déjà passés de la semaine en cours : masqués, avec un bouton pour les réafficher
+  var past = [], togglePast = function(){};
+  if (current >= 0) {
+    var cw = weeks[current], wStart = parse(cw.dataset.start);
+    cw.querySelectorAll('article.day').forEach(function(a, i){
+      var d = new Date(wStart); d.setDate(d.getDate() + i);
+      if (d < now) {
+        past.push(a);
+        var l = cw.querySelector('.strip a[href="#' + a.id + '"]');
+        if (l) past.push(l);
+      }
+    });
+    if (past.length) {
+      var nPast = past.filter(function(e){ return e.tagName === 'ARTICLE'; }).length;
+      var pBtn = document.createElement('button');
+      pBtn.type = 'button'; pBtn.className = 'past-toggle';
+      togglePast = function(open){
+        past.forEach(function(e){ e.hidden = !open; });
+        pBtn.textContent = open ? 'Masquer les jours passés' : 'Afficher les jours passés (' + nPast + ')';
+        pBtn.setAttribute('aria-expanded', open ? 'true' : 'false');
+      };
+      past.forEach(function(e){ e.classList.add('past-day'); });
+      togglePast(false);
+      pBtn.addEventListener('click', function(){ togglePast(past[0].hidden); });
+      var strip = cw.querySelector('.strip');
+      strip.parentNode.insertBefore(pBtn, strip.nextSibling);
+    }
   }
   window.addEventListener('hashchange', fromHash);
   // Au chargement, une ancienne ancre (favori, lien d'une semaine passée) ne doit pas masquer la semaine en cours
