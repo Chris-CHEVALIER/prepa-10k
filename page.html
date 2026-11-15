@@ -1,9 +1,9 @@
-<title>Prépa 10k Paris Centre</title>
+<title>Carnet d'entraînement</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@500;600;700;800&family=Source+Sans+3:wght@400;500;600;700&family=JetBrains+Mono:wght@400;600&display=swap">
 <style>
-/* Layout : feuille de route d'entraîneur. Bandeau dossard, frise des 5 semaines, puis une carte par jour avec ses blocs minutés. */
+/* Layout : carnet d'entraîneur. Bandeau résultat du 10k, frise des phases, puis une carte par jour avec ses blocs minutés. */
 :root{
   --bg:#F3F5F8; --surface:#FFFFFF; --ink:#13203A; --muted:#5A6680; --line:#DCE2EC;
   --accent:#1F46D1; --accent-soft:#E4EAFB; --bib:#FFFFFF; --bib-ink:#13203A;
@@ -145,40 +145,39 @@ a{color:var(--accent)}
 
 <div class="wrap">
 
-<header class="bib" aria-label="Objectif course">
+<header class="bib" aria-label="Résultat du 10k et nouvelle phase">
   <div class="bib-top">
-    <span class="eyebrow">10k HOKA Paris Centre</span>
+    <span class="eyebrow">10k HOKA Paris Centre · terminé</span>
     <span class="eyebrow">Dim. 15 nov. 2026</span>
   </div>
-  <div class="bib-num">10<span>K</span></div>
-  <p class="bib-sub">Rue de Rivoli → Avenue de l'Opéra</p>
+  <div class="bib-num">57<span>:57</span></div>
+  <p class="bib-sub">10 km bouclés à 5:50 /km avec ton ami. Place à la phase 2.</p>
   <div class="stats">
-    <div class="stat"><small>Objectif 15 nov.</small><b>Finir à trois</b><small>en courant, sans pression sur le chrono</small></div>
-    <div class="stat"><small>Course dans</small><b id="countdown">35 jours</b><small>5 semaines de prépa</small></div>
-    <div class="stat"><small id="st-label">Semaine en cours</small><b id="st-name">S2 · Consolidation</b><small id="st-range">19 → 25 octobre</small><a id="st-today" class="today-link" href="#" hidden>Voir la séance du jour ↓</a></div>
-    <div class="stat"><small id="st-kmlabel">Volume course S2</small><b class="mono" id="st-km">≈ 17 km</b><small id="st-kmnote">contre ≈ 15 km en semaine 1</small></div>
+    <div class="stat"><small>Objectif phase 2</small><b>Haut du corps</b><small>pectoraux, dos, bras, abdos plus dessinés</small></div>
+    <div class="stat"><small>Rythme</small><b>4 muscu / sem.</b><small>plus course et yoga pour varier</small></div>
+    <div class="stat"><small id="st-label">Semaine en cours</small><b id="st-name">S6 · Transition</b><small id="st-range">16 → 22 novembre</small><a id="st-today" class="today-link" href="#" hidden>Voir la séance du jour ↓</a></div>
+    <div class="stat"><small id="st-kmlabel">Volume course S6</small><b class="mono" id="st-km">≈ 8 km</b><small id="st-kmnote">course facultative, priorité à la muscu</small></div>
   </div>
 </header>
 
 <section class="section" aria-labelledby="bilan">
   <div>
-    <p class="eyebrow">Point de départ</p>
-    <h2 id="bilan">Ce que dit ton Strava</h2>
+    <p class="eyebrow">Phase 1 terminée</p>
+    <h2 id="bilan">Bilan de la prépa 10k</h2>
   </div>
   <div class="grid2">
     <div class="panel">
-      <h3>Course à pied (6 dernières semaines)</h3>
+      <h3>Cinq semaines de course</h3>
       <div class="scroll">
       <table>
-        <thead><tr><th>Date</th><th>Distance</th><th>Temps</th><th>Allure</th></tr></thead>
+        <thead><tr><th>Semaine</th><th>Course</th><th>Plus longue sortie</th></tr></thead>
         <tbody>
-          <tr><td>sam. 10/10</td><td class="num">5,01 km</td><td class="num">33:35</td><td class="num">6:42</td></tr>
-          <tr><td>mer. 07/10</td><td class="num">3,94 km</td><td class="num">28:06</td><td class="num">7:08</td></tr>
-          <tr><td>mar. 06/10</td><td class="num">2,50 km</td><td class="num">15:33</td><td class="num">6:12</td></tr>
-          <tr><td>jeu. 01/10</td><td class="num">2,96 km</td><td class="num">24:18</td><td class="num">8:13</td></tr>
-          <tr><td>sam. 26/09</td><td class="num">4,09 km</td><td class="num">24:18</td><td class="num">5:56</td></tr>
-          <tr><td>dim. 13/09</td><td class="num">5,02 km</td><td class="num">34:56</td><td class="num">6:58</td></tr>
-          <tr><td>dim. 06/09</td><td class="num">5,02 km</td><td class="num">31:10</td><td class="num">6:13</td></tr>
+          <tr><td>Avant la prépa</td><td class="num">≈ 11,5 km</td><td class="num">5 km avec des pauses</td></tr>
+          <tr><td>S1 · 12–18 oct.</td><td class="num">15,6 km</td><td class="num">6,30 km</td></tr>
+          <tr><td>S2 · 19–25 oct.</td><td class="num">19,4 km</td><td class="num">7,45 km</td></tr>
+          <tr><td>S3 · 26 oct.–1 nov.</td><td class="num">19,1 km</td><td class="num">9,42 km</td></tr>
+          <tr><td>S4 · 2–8 nov.</td><td class="num">13,3 km</td><td class="num">9,10 km</td></tr>
+          <tr><td>S5 · 9–15 nov.</td><td class="num">17,3 km</td><td class="num"><b>10 km en 57:57</b></td></tr>
         </tbody>
       </table>
       </div>
@@ -186,55 +185,67 @@ a{color:var(--accent)}
     <div class="panel">
       <h3>Lecture du coach</h3>
       <ul class="ex">
-        <li>Tu cours 2 à 3 fois par semaine sur 2,5 à 5 km. Ta plus longue sortie fait 5 km.</li>
-        <li>Tes allures habituelles vont de 6:00 à 7:10 /km. Ta meilleure allure sur 4 km est 5:56 /km (26/09, avec 96 m de dénivelé).</li>
-        <li>Ton 5 km du 10/10 était un effort maximal en 3 × 10 min avec 2 min de marche entre les blocs. En course, tu tournais donc autour de 6:15–6:30 /km.</li>
-        <li>Natation régulière (3 séances la semaine dernière). Strava affiche 2 400 à 3 300 m, je retiens tes vraies distances de 1 300 à 1 800 m.</li>
-        <li>Renfo encore court (environ 13 min) et un yoga d'1 h le 4/10. C'est une bonne base à structurer.</li>
-        <li>Gros atout : ton moteur cardio est entretenu par la natation. Le point à surveiller est l'adaptation des tendons et des mollets à plus de volume de course.</li>
+        <li>Tu es passé de 5 km entrecoupés de marche à 10 km courus à 5:50 /km. C'est 7 à 10 min de mieux que l'estimation de départ (1h05–1h08).</li>
+        <li>Tu as couru malgré un mal de dos attrapé la veille en déménageant, avec un 2e km à 5:37 et un dernier km à 5:34 /km.</li>
+        <li>Fréquence cardiaque moyenne de 173 et maximum de 195. On s'en servira pour tes zones cardio.</li>
+        <li>Les genoux ont tenu grâce au Renfo C et à la foulée courte. Plus aucune douleur après la course.</li>
+        <li>Le 55:00 de départ n'est plus très loin. Ce sera un bel objectif pour un 10 km au printemps, si l'envie revient.</li>
       </ul>
     </div>
   </div>
   <div class="notice" role="note">
-    <strong>L'esprit de cette prépa</strong>
-    <p>Le 15 novembre, tu cours avec deux amis et le chrono n'est pas l'enjeu. Le but est de finir les 10 km en courant, en forme et avec le sourire. Ton niveau actuel tourne autour de 1h05–1h08, et ce sera très bien.</p>
-    <p>Le vrai objectif est plus large. Il s'agit de te renforcer et d'améliorer ta condition physique avec du sport chaque jour, toute l'année. La course montera donc en charge très progressivement. La natation, le vélo, le renfo et le yoga font l'essentiel du travail, sans impact sur les articulations.</p>
+    <strong>L'esprit de la phase 2</strong>
+    <p>Place à la muscu du haut du corps, avec 4 séances par semaine pour dessiner les pectoraux, le dos, les bras et les abdos. La course et le yoga restent dans la semaine pour varier, entretenir le cardio et garder de la souplesse.</p>
+    <p>Jusqu'à ton inscription à la salle, tout se fait à la maison au poids du corps. C'est le moment idéal pour apprendre les bons gestes avant de charger.</p>
   </div>
 </section>
 
 <section class="section" aria-labelledby="route">
   <div>
     <p class="eyebrow">Feuille de route</p>
-    <h2 id="route">5 semaines jusqu'au 10k, puis toute l'année</h2>
+    <h2 id="route">La phase 2, bloc par bloc</h2>
   </div>
   <div class="road">
-    <div class="wk"><span class="eyebrow">S1 · 12–18 oct.</span><span class="k">Fondations</span><div class="bar"><i style="width:68%"></i></div><p>≈ 14 km de course · sortie longue 6 km · 1ère séance de fractionné</p></div>
-    <div class="wk now"><span class="eyebrow">S2 · 19–25 oct.</span><span class="k">Consolidation</span><div class="bar"><i style="width:80%"></i></div><p>≈ 16 km · fractions d'1 min un peu moins vite, récup plus longue · sortie longue 7 km</p></div>
-    <div class="wk"><span class="eyebrow">S3 · 26 oct.–1 nov.</span><span class="k">Assimilation</span><div class="bar"><i style="width:92%"></i></div><p>≈ 18 km · fractions de 1 min 30 · sortie longue 8 km · sans piscine</p></div>
-    <div class="wk"><span class="eyebrow">S4 · 2–8 nov.</span><span class="k">Genoux d'abord</span><div class="bar"><i style="width:75%"></i></div><p>≈ 14 km · retour de la piscine · renfo des genoux · sortie 8 km sur le plat</p></div>
-    <div class="wk race"><span class="eyebrow">S5 · 9–15 nov.</span><span class="k">Affûtage</span><div class="bar"><i style="width:45%"></i></div><p>≈ 8 km + la course · voyage et déménagement · jambes fraîches</p></div>
+    <div class="wk race"><span class="eyebrow">S1–S5 · 12 oct.–15 nov.</span><span class="k">Prépa 10k</span><div class="bar"><i style="width:100%"></i></div><p>Terminée · 10 km en 57:57</p></div>
+    <div class="wk now"><span class="eyebrow">S6 · 16–22 nov.</span><span class="k">Transition</span><div class="bar"><i style="width:55%"></i></div><p>récupération de la course et du dos · 4 premières séances de muscu, version légère</p></div>
+    <div class="wk"><span class="eyebrow">S7–S9 · 23 nov.–13 déc.</span><span class="k">Bloc poids du corps</span><div class="bar"><i style="width:80%"></i></div><p>4 muscu par semaine à la maison · on ajoute des répétitions chaque semaine · 2 courses et du yoga</p></div>
+    <div class="wk"><span class="eyebrow">Dès l'inscription</span><span class="k">Bloc salle</span><div class="bar"><i style="width:100%"></i></div><p>machines, haltères et barre de traction · retour de la natation · programme ajusté au matériel</p></div>
   </div>
-  <p class="lead">La page sera mise à jour chaque semaine avec le détail de la suivante, ajusté selon ce que tu as réellement fait sur Strava. La course ne grimpe jamais de plus de 2 à 3 km d'une semaine à l'autre. Après le 15 novembre, le programme continue avec 2 à 3 courses par semaine, toujours varié, pour progresser toute l'année.</p>
+  <p class="lead">La page est mise à jour chaque semaine avec le détail de la suivante, d'après ce que tu as fait sur Strava et ton agenda. Préviens-moi dès que tu es inscrit à la salle, on passera au bloc avec charges.</p>
 </section>
 
 <section class="section" aria-labelledby="zones">
   <div>
     <p class="eyebrow">Repères d'intensité</p>
-    <h2 id="zones">Tes allures de travail</h2>
+    <h2 id="zones">Tes repères en muscu et en course</h2>
   </div>
-  <div class="panel scroll">
-    <table>
-      <thead><tr><th>Zone</th><th>Allure</th><th>Sensation</th><th>Usage</th></tr></thead>
-      <tbody>
-        <tr><td><b>Endurance</b></td><td class="num">7:00–7:30 /km</td><td>Tu peux parler en phrases complètes. Effort 4/10.</td><td>Footings, sortie longue. 80 % de ta course.</td></tr>
-        <tr><td><b>Récupération</b></td><td class="num">7:45–8:30 /km</td><td>Très facile, tu pourrais chanter. Effort 2–3/10.</td><td>Échauffement, trot entre les fractions, footing du lendemain.</td></tr>
-        <tr><td><b>Allure 10k actuelle</b></td><td class="num">6:30–7:00 /km</td><td>Phrases courtes possibles. Effort 7/10.</td><td>Blocs spécifiques à partir de S3.</td></tr>
-        <tr><td><b>Allure vive</b></td><td class="num">5:40–6:00 /km</td><td>Rapide mais relâché, quelques mots seulement. Effort 7–8/10.</td><td>Fractions courtes de 1 min pour travailler la vitesse et la foulée.</td></tr>
-        <tr><td><b>Lignes droites</b></td><td class="num">≈ 4:45–5:00 /km</td><td>Rapide et relâché, pas un sprint.</td><td>Accélérations de 20 s pour la technique.</td></tr>
-      </tbody>
-    </table>
+  <div class="grid2">
+    <div class="panel scroll">
+      <h3>Muscu</h3>
+      <table>
+        <thead><tr><th>Repère</th><th>Consigne</th></tr></thead>
+        <tbody>
+          <tr><td><b>Répétitions</b></td><td>8 à 15 par série. Moins de 8 propres, prends une version plus facile. Plus de 15, prends une version plus dure.</td></tr>
+          <tr><td><b>Effort</b></td><td>Arrête chaque série quand il te reste <b>2 répétitions</b> en réserve. Jamais jusqu'à l'échec cette semaine.</td></tr>
+          <tr><td><b>Tempo</b></td><td>3 s pour descendre, 1 s de pause, remonte sans à-coup. Au poids du corps, la lenteur remplace la charge.</td></tr>
+          <tr><td><b>Repos</b></td><td>60 à 90 s entre deux séries, 2 min entre deux exercices.</td></tr>
+          <tr><td><b>Progression</b></td><td>Note tes répétitions. Quand tu fais 15 sur toutes les séries, passe à la version plus dure.</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="panel scroll">
+      <h3>Course, mises à jour après le 10k</h3>
+      <table>
+        <thead><tr><th>Zone</th><th>Allure</th><th>Usage</th></tr></thead>
+        <tbody>
+          <tr><td><b>Récupération</b></td><td class="num">7:30–8:15 /km</td><td>Échauffement, lendemain d'effort.</td></tr>
+          <tr><td><b>Endurance</b></td><td class="num">6:50–7:20 /km</td><td>Footings. Tu peux parler en phrases complètes.</td></tr>
+          <tr><td><b>Allure 10k</b></td><td class="num">5:45–6:00 /km</td><td>Ton allure de course actuelle.</td></tr>
+        </tbody>
+      </table>
+    </div>
   </div>
-  <p class="lead"><b>Ta Forerunner 165 est de retour.</b> Les allures du tableau deviennent tes consignes pendant la sortie. Règle un tour automatique tous les kilomètres et affiche l'allure moyenne du tour plutôt que l'allure instantanée, qui saute beaucoup en ville. Le test de la parole reste ton garde-fou. Si l'allure est bonne mais que tu ne peux plus parler, ralentis. En natation, règle bien la longueur du bassin (25 m).</p>
+  <p class="lead">Sur ta Forerunner, garde le tour automatique au kilomètre et l'allure moyenne du tour. Pour la muscu, enregistre les séances en « Musculation » pour garder une trace sur Strava et note tes répétitions dans les commentaires.</p>
 </section>
 
 <nav class="weeknav" aria-label="Choisir la semaine">
@@ -1440,6 +1451,7 @@ a{color:var(--accent)}
         <li><span class="dur">Soirée</span><span class="what">Dîner tôt et connu (voir l'alimentation plus haut), puis coucher tôt. Une nuit moyenne la veille d'une course n'a aucune importance, c'est celle de vendredi qui compte.</span></li>
       </ol>
     </div>
+    <div class="report"><span class="eyebrow">Bilan · fait</span><p>2,24 km en 17:10 pour réveiller les jambes, malgré le déménagement.</p></div>
   </article>
 
   <!-- S5 DIMANCHE -->
@@ -1498,8 +1510,240 @@ a{color:var(--accent)}
         <li><span class="dur">Le soir</span><span class="what">10 min d'étirements doux. Et envoie-moi ton lien Strava !</span></li>
       </ol>
     </div>
+    <div class="report"><span class="eyebrow">Bilan · 10 km en 57:57</span>
+      <p>10,28 km au GPS en 59:59, soit 5:50 /km, et un 10 km en 57:57 d'après Strava. Allure très régulière entre 5:34 et 6:07 /km, avec un 1er km prudent à 6:06 et le dernier à 5:34. Tu as couru avec ton ami jusqu'au bout malgré un mal de dos attrapé la veille.</p>
+      <p>Fréquence cardiaque moyenne de 173 et pic à 195. Tu étais à fond, et c'est mérité. Bravo, c'est 7 à 10 min de mieux que ce qu'on imaginait le 11 octobre.</p>
+    </div>
   </article>
 </section>
+
+<section class="section week" id="s6" aria-labelledby="h-s6" data-start="2026-11-16" data-end="2026-11-22" data-name="S6 · Transition" data-range="16 → 22 novembre" data-km="≈ 9,5 km" data-km-note="course facultative, priorité à la muscu">
+  <div>
+    <p class="eyebrow">Semaine 6 · du lundi 16 au dimanche 22 novembre</p>
+    <h2 id="h-s6">Le programme jour par jour</h2>
+  </div>
+  <p class="lead">Première semaine de la phase 2. On récupère du 10k et du dos tout en posant les bases de la muscu. Quatre séances alternent la poussée (pectoraux, triceps, épaules) et le tirage (dos, biceps), avec des abdos à chaque fois. Le même muscle n'est jamais travaillé deux jours de suite. Deux footings et du yoga complètent la semaine. Les séances de tirage restent légères tant que le milieu du dos tire.</p>
+  <div class="legend">
+    <span><i class="dot d-str"></i>Muscu</span><span><i class="dot d-run"></i>Course / marche</span><span><i class="dot d-yoga"></i>Yoga / mobilité</span>
+  </div>
+  <nav class="strip" aria-label="Aperçu de la semaine 6">
+    <a href="#s6-lun"><span class="dn">Lun 16</span><span class="chips"><i class="dot d-run"></i><i class="dot d-yoga"></i></span><small>Marche + yoga dos</small><small class="total">≈ 55 min</small></a>
+    <a href="#s6-mar"><span class="dn">Mar 17</span><span class="chips"><i class="dot d-str"></i><i class="dot d-yoga"></i></span><small>Muscu A · poussée</small><small class="total">≈ 50 min</small></a>
+    <a href="#s6-mer"><span class="dn">Mer 18</span><span class="chips"><i class="dot d-run"></i><i class="dot d-yoga"></i></span><small>Footing + yoga</small><small class="total">≈ 60 min</small></a>
+    <a href="#s6-jeu"><span class="dn">Jeu 19</span><span class="chips"><i class="dot d-str"></i></span><small>Muscu B · tirage léger</small><small class="total">≈ 35 min</small></a>
+    <a href="#s6-ven"><span class="dn">Ven 20</span><span class="chips"><i class="dot d-run"></i><i class="dot d-yoga"></i></span><small>Footing + lignes droites</small><small class="total">≈ 50 min</small></a>
+    <a href="#s6-sam"><span class="dn">Sam 21</span><span class="chips"><i class="dot d-str"></i><i class="dot d-run"></i></span><small>Muscu C · poussée et bras</small><small class="total">≈ 40 min + balade</small></a>
+    <a href="#s6-dim"><span class="dn">Dim 22</span><span class="chips"><i class="dot d-str"></i><i class="dot d-yoga"></i></span><small>Muscu D · tirage et abdos</small><small class="total">≈ 55 min</small></a>
+  </nav>
+
+  <!-- S6 LUNDI -->
+  <article class="day" id="s6-lun" data-day="s6-lun">
+    <div class="day-head">
+      <div><p class="eyebrow">Lundi 16 novembre · chez toi à partir de 18h</p><h3>Récupération de la course</h3></div>
+      <label class="done"><input type="checkbox" id="chk-s6-lun"> Séance faite</label>
+    </div>
+    <div class="sess">
+      <div class="sess-head">
+        <div class="sess-title"><span class="tag t-run">Marche</span><h4>Marche de récupération</h4></div>
+        <span class="when">en fin de journée · 30 min</span>
+      </div>
+      <p class="goal">Lendemain de course, pas de muscu ni de course. La marche fait circuler le sang dans les jambes.</p>
+      <ol class="blocks">
+        <li><span class="dur">30 min</span><span class="what">Marche tranquille, à ton rythme.</span></li>
+      </ol>
+    </div>
+    <div class="sess">
+      <div class="sess-head">
+        <div class="sess-title"><span class="tag t-yoga">Yoga</span><h4>Down Dog · dos et épaules</h4></div>
+        <span class="when">20–30 min</span>
+      </div>
+      <p class="goal">Pour détendre le milieu du dos, encore douloureux du déménagement.</p>
+      <ol class="blocks">
+        <li class="main"><span class="dur">Réglages</span><span class="what"><b>Hatha, Débutant 2, Boost Dos (ou Épaules), rythme lent, 20 à 30 min.</b></span></li>
+      </ol>
+    </div>
+  </article>
+
+  <!-- S6 MARDI -->
+  <article class="day" id="s6-mar" data-day="s6-mar">
+    <div class="day-head">
+      <div><p class="eyebrow">Mardi 17 novembre · chez toi toute la journée</p><h3>Première séance de muscu</h3></div>
+      <label class="done"><input type="checkbox" id="chk-s6-mar"> Séance faite</label>
+    </div>
+    <div class="sess">
+      <div class="sess-head">
+        <div class="sess-title"><span class="tag t-str">Muscu</span><h4>Muscu A · poussée (pectoraux, triceps, épaules)</h4></div>
+        <span class="when">40 min</span>
+      </div>
+      <p class="goal">Première séance. Le but est de trouver la bonne version de chaque exercice, celle qui te permet 8 à 15 répétitions propres avec 2 en réserve. Note tes chiffres, ils serviront de base pour les semaines suivantes.</p>
+      <ol class="blocks">
+        <li><span class="dur">6 min</span><span class="what">Échauffement. Cercles de bras 30 s dans chaque sens, chat-vache × 10, 10 pompes inclinées mains sur une table, planche 20 s.</span></li>
+        <li class="main"><span class="dur">4 séries</span><span class="what"><b>Pompes sur tes poignées, 8–15 répétitions.</b> Corps gainé du talon à la tête, descente en 3 s jusqu'à frôler le sol. Trop dur, pose les genoux. 90 s de repos.</span></li>
+        <li class="main"><span class="dur">3 séries</span><span class="what"><b>Pompes pieds sur une chaise, 6–12.</b> Elles ciblent le haut des pectoraux et les épaules. Trop dur, fais des pompes classiques.</span></li>
+        <li class="main"><span class="dur">3 séries</span><span class="what"><b>Dips sur le bord d'une chaise calée contre un mur, 8–15.</b> Coudes vers l'arrière, descends jusqu'à 90°. Jambes pliées pour faciliter, tendues pour durcir.</span></li>
+        <li class="main"><span class="dur">3 séries</span><span class="what"><b>Pompes serrées, mains sous les épaules et coudes collés au corps, 6–12.</b> C'est l'exercice roi des triceps au poids du corps.</span></li>
+        <li class="main"><span class="dur">3 séries</span><span class="what"><b>Pompes piquées (pike push-up), 6–10.</b> Fesses en l'air en V inversé, tête qui descend entre les mains. Pour les épaules.</span></li>
+        <li class="main"><span class="dur">Abdos</span><span class="what"><b>3 tours :</b> crunch inversé × 12 (genoux vers la poitrine, bassin qui décolle) puis planche 40 s.</span></li>
+      </ol>
+      <p class="tip">Pour ton dos, si une gêne dépasse 3/10 entre les omoplates, arrête l'exercice en cours et passe au suivant.</p>
+    </div>
+    <div class="sess">
+      <div class="sess-head">
+        <div class="sess-title"><span class="tag t-yoga">Mobilité</span><h4>Étirements du haut du corps</h4></div>
+        <span class="when">juste après · 8 min</span>
+      </div>
+      <ol class="blocks">
+        <li><span class="dur">8 min</span><span class="what">Pectoraux contre un encadrement de porte, triceps bras derrière la tête, posture de l'enfant bras tendus, chat-vache. 45 s chacun.</span></li>
+      </ol>
+    </div>
+  </article>
+
+  <!-- S6 MERCREDI -->
+  <article class="day" id="s6-mer" data-day="s6-mer">
+    <div class="day-head">
+      <div><p class="eyebrow">Mercredi 18 novembre · chez toi toute la journée</p><h3>Footing et souplesse</h3></div>
+      <label class="done"><input type="checkbox" id="chk-s6-mer"> Séance faite</label>
+    </div>
+    <div class="sess">
+      <div class="sess-head">
+        <div class="sess-title"><span class="tag t-run">Course</span><h4>Footing de récupération</h4></div>
+        <span class="when">quand tu veux · 30 min · ≈ 4 km</span>
+      </div>
+      <p class="goal">Premier footing après la course, sans objectif. Juste le plaisir de courir.</p>
+      <ol class="blocks">
+        <li><span class="dur">5 min</span><span class="what">Marche rapide puis trot vers 8:00 /km.</span></li>
+        <li class="main"><span class="dur">25 min</span><span class="what"><b>Footing à 7:00–7:30 /km.</b> Garde la foulée courte qui a sauvé tes genoux.</span></li>
+      </ol>
+    </div>
+    <div class="sess">
+      <div class="sess-head">
+        <div class="sess-title"><span class="tag t-yoga">Yoga</span><h4>Down Dog · hanches et ischios</h4></div>
+        <span class="when">plus tard dans la journée · 30 min</span>
+      </div>
+      <ol class="blocks">
+        <li class="main"><span class="dur">Réglages</span><span class="what"><b>Hatha, Débutant 2, Boost Hanches, rythme lent, 30 min.</b></span></li>
+      </ol>
+    </div>
+  </article>
+
+  <!-- S6 JEUDI -->
+  <article class="day" id="s6-jeu" data-day="s6-jeu">
+    <div class="day-head">
+      <div><p class="eyebrow">Jeudi 19 novembre · chez toi à partir de 17h</p><h3>Muscu du dos</h3></div>
+      <label class="done"><input type="checkbox" id="chk-s6-jeu"> Séance faite</label>
+    </div>
+    <div class="sess">
+      <div class="sess-head">
+        <div class="sess-title"><span class="tag t-str">Muscu</span><h4>Muscu B · tirage (dos, biceps), version légère</h4></div>
+        <span class="when">35 min</span>
+      </div>
+      <p class="goal">Le dos est le plus dur à travailler sans matériel, et le tien est encore sensible. Cette semaine, 2 à 3 séries seulement sur le tirage, avec une gêne qui doit rester sous 3/10.</p>
+      <ol class="blocks">
+        <li><span class="dur">6 min</span><span class="what">Échauffement. Chat-vache × 10, fil de l'aiguille 8 par côté (à quatre pattes, glisse un bras sous l'autre), cercles d'épaules, 10 tirages très faciles sous la table.</span></li>
+        <li class="main"><span class="dur">3 séries</span><span class="what"><b>Tirage inversé sous une table, 6–12.</b> Allongé sous une table <b>très stable</b>, mains au bord, tire ta poitrine vers la table en serrant les omoplates. Genoux pliés pour faciliter. Vérifie d'abord que la table ne bascule pas.</span></li>
+        <li class="main"><span class="dur">3 séries</span><span class="what"><b>Superman Y-T-W, 8 de chaque lettre.</b> À plat ventre, bras en Y, puis en T, puis en W, pouces vers le ciel. Tiens 2 s en haut. Il renforce le milieu du dos, là où tu as mal.</span></li>
+        <li class="main"><span class="dur">4 séries</span><span class="what"><b>Curl isométrique à la sangle, 20 s par bras.</b> Assis, la sangle sous les pieds, coude plié à 90°. Tire vers le haut à 80 % de ta force, sans bouger.</span></li>
+        <li class="main"><span class="dur">3 séries</span><span class="what"><b>Rowing isométrique à la sangle, 20 s.</b> Assis jambes tendues, sangle autour des pieds, tire les coudes en arrière et serre les omoplates.</span></li>
+        <li class="main"><span class="dur">Abdos</span><span class="what"><b>3 tours :</b> dead bug × 10 par côté, puis gainage creux (hollow) 20 s, puis planche latérale 30 s par côté.</span></li>
+      </ol>
+      <p class="tip">Le dos et les biceps progresseront bien plus vite avec un kit d'élastiques ou une barre de traction de porte. C'est expliqué dans les garde-fous plus bas.</p>
+    </div>
+  </article>
+
+  <!-- S6 VENDREDI -->
+  <article class="day" id="s6-ven" data-day="s6-ven">
+    <div class="day-head">
+      <div><p class="eyebrow">Vendredi 20 novembre · chez toi à partir de 17h</p><h3>Footing d'endurance</h3></div>
+      <label class="done"><input type="checkbox" id="chk-s6-ven"> Séance faite</label>
+    </div>
+    <div class="sess">
+      <div class="sess-head">
+        <div class="sess-title"><span class="tag t-run">Course</span><h4>Footing + lignes droites</h4></div>
+        <span class="when">vers 17h30 · 40 min · ≈ 5,5 km</span>
+      </div>
+      <ol class="blocks">
+        <li><span class="dur">5 min</span><span class="what">Marche rapide puis trot vers 8:00 /km.</span></li>
+        <li class="main"><span class="dur">30 min</span><span class="what"><b>Footing à 6:50–7:20 /km.</b></span></li>
+        <li class="main"><span class="dur">4 × 20 s</span><span class="what"><b>Lignes droites relâchées</b>, récup 40 s en marchant.</span></li>
+      </ol>
+    </div>
+    <div class="sess">
+      <div class="sess-head">
+        <div class="sess-title"><span class="tag t-yoga">Mobilité</span><h4>Retour au calme</h4></div>
+        <span class="when">au retour · 10 min</span>
+      </div>
+      <ol class="blocks">
+        <li><span class="dur">10 min</span><span class="what">Quadriceps, mollets, ischios avec la sangle, fessiers, fil de l'aiguille pour le dos. 60 s chacun.</span></li>
+      </ol>
+    </div>
+  </article>
+
+  <!-- S6 SAMEDI -->
+  <article class="day" id="s6-sam" data-day="s6-sam">
+    <div class="day-head">
+      <div><p class="eyebrow">Samedi 21 novembre · journée libre</p><h3>Poussée et bras</h3></div>
+      <label class="done"><input type="checkbox" id="chk-s6-sam"> Séance faite</label>
+    </div>
+    <div class="sess">
+      <div class="sess-head">
+        <div class="sess-title"><span class="tag t-str">Muscu</span><h4>Muscu C · poussée et bras</h4></div>
+        <span class="when">40 min</span>
+      </div>
+      <p class="goal">Mêmes muscles que mardi avec d'autres angles. Essaie de battre d'une répétition tes chiffres de mardi sur les pompes.</p>
+      <ol class="blocks">
+        <li><span class="dur">6 min</span><span class="what">Échauffement. Cercles de bras 30 s dans chaque sens, chat-vache × 10, 10 pompes inclinées mains sur une table, planche 20 s.</span></li>
+        <li class="main"><span class="dur">4 séries</span><span class="what"><b>Pompes mains larges, 8–15.</b> Mains plus écartées que les épaules, pour l'extérieur des pectoraux.</span></li>
+        <li class="main"><span class="dur">3 séries</span><span class="what"><b>Pompes décalées, 6–10 par côté.</b> Une main sur une poignée, l'autre au sol. Change de côté à chaque série.</span></li>
+        <li class="main"><span class="dur">3 séries</span><span class="what"><b>Dips sur chaise, 8–15</b>, une répétition de plus que mardi.</span></li>
+        <li class="main"><span class="dur">3 séries</span><span class="what"><b>Pompes diamant, 6–10.</b> Mains rapprochées en losange sous la poitrine. Sur les genoux si besoin.</span></li>
+        <li class="main"><span class="dur">3 séries</span><span class="what"><b>Extension triceps au sol, 8–12.</b> En position de planche sur les avant-bras, pousse sur les mains pour tendre les bras, puis redescends lentement.</span></li>
+        <li class="main"><span class="dur">Abdos</span><span class="what"><b>3 tours :</b> relevés de jambes allongé × 10, mountain climbers 30 s, planche 45 s.</span></li>
+      </ol>
+    </div>
+    <div class="sess">
+      <div class="sess-head">
+        <div class="sess-title"><span class="tag t-run">Marche</span><h4>Balade</h4></div>
+        <span class="when">dans la journée · 30–60 min</span>
+      </div>
+      <ol class="blocks">
+        <li><span class="dur">30–60 min</span><span class="what">Balade à pied, à deux si ta femme en a envie.</span></li>
+      </ol>
+    </div>
+  </article>
+
+  <!-- S6 DIMANCHE -->
+  <article class="day" id="s6-dim" data-day="s6-dim">
+    <div class="day-head">
+      <div><p class="eyebrow">Dimanche 22 novembre · journée libre</p><h3>Dos et abdos</h3></div>
+      <label class="done"><input type="checkbox" id="chk-s6-dim"> Séance faite</label>
+    </div>
+    <div class="sess">
+      <div class="sess-head">
+        <div class="sess-title"><span class="tag t-str">Muscu</span><h4>Muscu D · tirage et abdos</h4></div>
+        <span class="when">35 min</span>
+      </div>
+      <p class="goal">Si le dos va mieux, passe à 4 séries de tirage. Sinon, garde la version de jeudi.</p>
+      <ol class="blocks">
+        <li><span class="dur">6 min</span><span class="what">Échauffement. Chat-vache × 10, fil de l'aiguille 8 par côté (à quatre pattes, glisse un bras sous l'autre), cercles d'épaules, 10 tirages très faciles sous la table.</span></li>
+        <li class="main"><span class="dur">3–4 séries</span><span class="what"><b>Tirage inversé sous la table, 6–12</b>, pieds un peu plus loin si c'était facile jeudi.</span></li>
+        <li class="main"><span class="dur">3 séries</span><span class="what"><b>Tirage inversé paumes vers toi, mains serrées, 6–10.</b> Cette prise fait plus travailler les biceps.</span></li>
+        <li class="main"><span class="dur">3 séries</span><span class="what"><b>Superman Y-T-W, 8 de chaque lettre.</b></span></li>
+        <li class="main"><span class="dur">3 séries</span><span class="what"><b>Curl isométrique à la sangle, 25 s par bras.</b></span></li>
+        <li class="main"><span class="dur">Abdos</span><span class="what"><b>Circuit de 3 tours :</b> crunch × 15, crunch inversé × 12, planche latérale 30 s par côté, gainage creux 30 s.</span></li>
+      </ol>
+    </div>
+    <div class="sess">
+      <div class="sess-head">
+        <div class="sess-title"><span class="tag t-yoga">Yoga</span><h4>Down Dog · récupération</h4></div>
+        <span class="when">le soir · 20 min</span>
+      </div>
+      <ol class="blocks">
+        <li class="main"><span class="dur">Réglages</span><span class="what"><b>Hatha, Débutant 2, Boost Dos, rythme lent, 20 min.</b></span></li>
+      </ol>
+    </div>
+  </article>
+</section>
+
 
 
 
@@ -1510,19 +1754,17 @@ a{color:var(--accent)}
     <h2 id="regles">Les règles qui évitent la blessure</h2>
   </div>
   <div class="rules">
-    <div class="panel"><h4>La règle des 3/10</h4><p>Une gêne qui dépasse 3/10 ou qui augmente pendant la séance, on arrête la course. Tu remplaces par du vélo ou de la natation et tu m'en parles.</p></div>
-    <div class="panel"><h4>Lent, c'est le plan</h4><p>Les footings lents construisent l'endurance qui te fera tenir l'allure le jour J. Les courir trop vite te fatigue sans te faire progresser.</p></div>
-    <div class="panel"><h4>Jamais deux jours durs d'affilée</h4><p>Le fractionné et la sortie longue du dimanche sont les deux séances clés. Le reste sert à récupérer ou à se renforcer.</p></div>
-    <div class="panel"><h4>Sommeil et carburant</h4><p>Vise 7 h 30 de sommeil. Mange une collation glucides + protéines dans l'heure après la course et la natation.</p></div>
-    <div class="panel"><h4>Une journée trop chargée</h4><p>Garde la séance principale et saute le complément. Une séance courte vaut mieux que rien, et un jour off vaut mieux qu'une blessure.</p></div>
-    <div class="panel"><h4>Le vélo compte aussi</h4><p>Un trajet sans assistance est une vraie séance d'endurance. La veille d'un fractionné ou d'une sortie longue, et les jours où tu cours, garde l'assistance.</p></div>
-    <div class="panel"><h4>Genoux qui tirent</h4><p>Une douleur devant le genou jusqu'à 3/10, qui disparaît au repos, se gère avec moins de course et plus de renfo. Si elle dépasse 3/10, revient au repos, dans les escaliers, ou dure encore dans deux semaines, consulte un médecin ou un kiné du sport.</p></div>
-    <div class="panel"><h4>Chaussures</h4><p>Vérifie le kilométrage de tes chaussures. Au-delà de 600–700 km l'amorti chute. Ne cours pas la course avec une paire neuve.</p></div>
+    <div class="panel"><h4>La règle des 3/10</h4><p>Une gêne qui dépasse 3/10 ou qui augmente pendant un exercice, tu l'arrêtes et tu passes au suivant. Ça vaut pour le dos cette semaine et pour les genoux en course.</p></div>
+    <div class="panel"><h4>Jamais deux jours de suite</h4><p>Un muscle a besoin de 48 h pour se reconstruire. On alterne donc poussée et tirage, avec une journée de course ou de yoga entre deux séances du même type.</p></div>
+    <div class="panel"><h4>La technique avant le nombre</h4><p>Une pompe complète et lente vaut mieux que trois à moitié. Si le dos se creuse ou les hanches tombent, la série est finie.</p></div>
+    <div class="panel"><h4>Protéines et sommeil</h4><p>Les muscles se construisent la nuit et dans l'assiette. Vise 7 h 30 de sommeil et une source de protéines à chaque repas (œufs, viande, poisson, laitages). Pour être plus dessiné, mange à ta faim sans grignoter.</p></div>
+    <div class="panel"><h4>Matériel conseillé</h4><p>Sans matériel, le dos et les biceps sont durs à charger. Un kit d'élastiques de résistance ou une barre de traction de porte, pour 20 à 30 €, changerait beaucoup avant la salle. Ce n'est pas obligatoire.</p></div>
+    <div class="panel"><h4>Une journée trop chargée</h4><p>Garde la séance de muscu et saute le reste. 20 min bien faites valent mieux que rien, et un jour off vaut mieux qu'une blessure.</p></div>
   </div>
 </section>
 
 <footer>
-  Programme établi le 11 octobre 2026 à partir de l'historique Strava, semaine 2 ajoutée le 17 octobre, semaine 3 le 25 octobre, semaine 4 le 1er novembre, semaine 5 le 8 novembre. Prochaine mise à jour : après la course, pour la suite du programme.
+  Programme établi le 11 octobre 2026 à partir de l'historique Strava, semaine 2 ajoutée le 17 octobre, semaine 3 le 25 octobre, semaine 4 le 1er novembre, semaine 5 le 8 novembre. Phase 2 (haut du corps) lancée le 15 novembre. Prochaine mise à jour : semaine 7, du 23 au 29 novembre.
 </footer>
 </div>
 
